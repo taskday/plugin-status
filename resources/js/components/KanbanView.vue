@@ -5,7 +5,7 @@
         <div class="h-full flex-grow">
           <div class="flex mx-auto gap-x-8 overflow-hidden h-full flex-grow pr-16">
             <div
-              class="w-96 flex-col flex shrink-0 py-4 rounded font-semibold translated-container"
+              class="w-96 flex-col flex shrink-0 py-4 rounded translated-container"
               v-for="column in state.columns"
             >
               <div>
