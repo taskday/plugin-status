@@ -6661,7 +6661,7 @@ const _sfc_main = /* @__PURE__ */ _defineComponent({
     const cardsForOption = (option2) => {
       return props.project.cards.filter((card) => {
         var _a2;
-        return (_a2 = card.fields) == null ? void 0 : _a2.some((f) => f.type === "status" && f.pivot.value == option2.color);
+        return (_a2 = card.fields) == null ? void 0 : _a2.some((f) => f.handle === "status" && f.pivot.value == option2.color);
       });
     };
     watch(() => props.project, () => {

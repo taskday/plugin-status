@@ -125,7 +125,7 @@ const updateColumn = (column: any, card: Card) => {
 const cardsForOption = (option: Option): Card[] => {
   return props.project.cards.filter((card) => {
     return card.fields?.some(
-      (f) => f.type === "status" && f.pivot.value == option.color
+      (f) => f.handle === "status" && f.pivot.value == option.color
     );
   });
 };
