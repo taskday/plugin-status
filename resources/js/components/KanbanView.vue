@@ -3,7 +3,9 @@
     <div class="-my-2 overflow-x-auto h-full flex-grow pr-16">
       <div class="py-2 align-middle inline-block min-w-full h-full flex-grow">
         <div class="h-full flex-grow">
-          <div class="flex mx-auto gap-x-8 overflow-hidden h-full flex-grow pr-16">
+          <div
+            class="flex mx-auto gap-x-8 overflow-hidden h-full flex-grow pr-16"
+          >
             <div
               class="w-96 flex-col flex shrink-0 py-4 rounded translated-container"
               v-for="column in state.columns"
@@ -12,7 +14,7 @@
                 <span
                   class="px-3 rounded h-6 inline-flex items-center text-sm"
                   :class="{
-                    'bg-gray-100 dark:bg-gray-400 text-gray-600 dark:text-gray-400 dark:bg-opacity-20':
+                    'bg-white dark:bg-gray-400 text-gray-600 dark:text-gray-400 dark:bg-opacity-20':
                       column.color === 'gray',
                     'bg-red-100 dark:bg-red-400 text-red-600 dark:text-red-400 dark:bg-opacity-20':
                       column.color === 'red',
@@ -49,10 +51,22 @@
                         class="flex items-center text-left font-semibold text-sm hover:underline"
                         >{{ element.title }}</VLink
                       >
+                      <div class="flex gap-2 items-start mt-2">
+                        <VFieldWrapper
+                          v-for="field in project.fields.filter(field => field.handle !== 'status')"
+                          :key="field.id"
+                          :card="element"
+                          :field="field"
+                        ></VFieldWrapper>
+                      </div>
                     </VCard>
                   </template>
                 </draggable>
-                <KanbanCardForm class="mt-4" :project="project" :status="column" />
+                <KanbanCardForm
+                  class="mt-4"
+                  :project="project"
+                  :status="column"
+                />
               </div>
             </div>
           </div>
@@ -66,7 +80,7 @@
 import draggable from "vuedraggable";
 import { watch, reactive } from "vue";
 import KanbanCardForm from "./KanbanCardForm.vue";
-import { VCard, VLink, useCardForm } from "taskday";
+import { VCard, VLink, VFieldWrapper, useCardForm } from "taskday";
 
 const props = defineProps<{
   title: String;
@@ -79,16 +93,16 @@ const props = defineProps<{
 
 type Option = { color: string; name: string };
 
-type Card = { fields: any[] }
+type Card = { fields: any[] };
 type Project = {
-  cards: Card[]
+  cards: Card[];
   customFields: {
     status: {
       id: string;
       options: Option[];
-    }
-  }
-}
+    };
+  };
+};
 
 const state = reactive<{
   columns: any[];
@@ -103,8 +117,8 @@ const state = reactive<{
 const updateColumn = (column: any, card: Card) => {
   const { form, update } = useCardForm();
   form.fields = {
-    'status': column.color
-  }
+    status: column.color,
+  };
   update(card);
 };
 

@@ -69,7 +69,7 @@ const _renderList$2 = window["Vue"].renderList;
 const _Fragment$2 = window["Vue"].Fragment;
 const _openBlock$3 = window["Vue"].openBlock;
 const _createElementBlock$3 = window["Vue"].createElementBlock;
-const _createBlock = window["Vue"].createBlock;
+const _createBlock$1 = window["Vue"].createBlock;
 function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_VDropdownButton = _resolveComponent$1("VDropdownButton");
   const _component_VDropdownItem = _resolveComponent$1("VDropdownItem");
@@ -96,7 +96,7 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
         _createVNode$3(_component_VDropdownItems, null, {
           default: _withCtx$2(() => [
             (_openBlock$3(true), _createElementBlock$3(_Fragment$2, null, _renderList$2(_ctx.options, (option2) => {
-              return _openBlock$3(), _createBlock(_component_VDropdownItem, {
+              return _openBlock$3(), _createBlock$1(_component_VDropdownItem, {
                 onClick: ($event) => _ctx.update(option2),
                 key: option2.id
               }, {
@@ -172,7 +172,7 @@ const _hoisted_4$1 = /* @__PURE__ */ _createTextVNode$1("\xD7");
 const _hoisted_5$1 = { class: "mt-4 space-y-4" };
 const _hoisted_6$1 = { class: "flex items-center space-x-4" };
 const _hoisted_7$1 = /* @__PURE__ */ _createElementVNode$1("option", { value: "blue" }, "blue", -1);
-const _hoisted_8 = /* @__PURE__ */ _createElementVNode$1("option", { value: "yellow" }, "yellow", -1);
+const _hoisted_8$1 = /* @__PURE__ */ _createElementVNode$1("option", { value: "yellow" }, "yellow", -1);
 const _hoisted_9 = /* @__PURE__ */ _createElementVNode$1("option", { value: "purple" }, "purple", -1);
 const _hoisted_10 = /* @__PURE__ */ _createElementVNode$1("option", { value: "red" }, "red", -1);
 const _hoisted_11 = /* @__PURE__ */ _createElementVNode$1("option", { value: "green" }, "green", -1);
@@ -223,7 +223,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         }, {
           default: _withCtx$1(() => [
             _hoisted_7$1,
-            _hoisted_8,
+            _hoisted_8$1,
             _hoisted_9,
             _hoisted_10,
             _hoisted_11,
@@ -6622,6 +6622,7 @@ const _createElementVNode = window["Vue"].createElementVNode;
 const _createTextVNode = window["Vue"].createTextVNode;
 const _withCtx = window["Vue"].withCtx;
 const _createVNode = window["Vue"].createVNode;
+const _createBlock = window["Vue"].createBlock;
 const _hoisted_1 = { class: "flex flex-col h-full flex-grow" };
 const _hoisted_2 = { class: "-my-2 overflow-x-auto h-full flex-grow pr-16" };
 const _hoisted_3 = { class: "py-2 align-middle inline-block min-w-full h-full flex-grow" };
@@ -6629,10 +6630,12 @@ const _hoisted_4 = { class: "h-full flex-grow" };
 const _hoisted_5 = { class: "flex mx-auto gap-x-8 overflow-hidden h-full flex-grow pr-16" };
 const _hoisted_6 = { class: "w-96 flex-col flex shrink-0 py-4 rounded translated-container" };
 const _hoisted_7 = { class: "mt-4" };
+const _hoisted_8 = { class: "flex gap-2 items-start mt-2" };
 const watch = window["Vue"].watch;
 const reactive = window["Vue"].reactive;
 const VCard = window["Components"].VCard;
 const VLink = window["Components"].VLink;
+const VFieldWrapper = window["Components"].VFieldWrapper;
 const useCardForm = window["Components"].useCardForm;
 const _sfc_main = /* @__PURE__ */ _defineComponent({
   props: {
@@ -6651,7 +6654,7 @@ const _sfc_main = /* @__PURE__ */ _defineComponent({
     const updateColumn = (column, card) => {
       const { form, update } = useCardForm();
       form.fields = {
-        "status": column.color
+        status: column.color
       };
       update(card);
     };
@@ -6680,7 +6683,7 @@ const _sfc_main = /* @__PURE__ */ _defineComponent({
                     _createElementVNode("div", null, [
                       _createElementVNode("span", {
                         class: _normalizeClass(["px-3 rounded h-6 inline-flex items-center text-sm", {
-                          "bg-gray-100 dark:bg-gray-400 text-gray-600 dark:text-gray-400 dark:bg-opacity-20": column.color === "gray",
+                          "bg-white dark:bg-gray-400 text-gray-600 dark:text-gray-400 dark:bg-opacity-20": column.color === "gray",
                           "bg-red-100 dark:bg-red-400 text-red-600 dark:text-red-400 dark:bg-opacity-20": column.color === "red",
                           "bg-green-100 dark:bg-green-400 text-green-600 dark:text-green-400 dark:bg-opacity-20": column.color === "green",
                           "bg-yellow-100 dark:bg-yellow-400 text-yellow-600 dark:text-yellow-400 dark:bg-opacity-20": column.color === "yellow",
@@ -6712,7 +6715,16 @@ const _sfc_main = /* @__PURE__ */ _defineComponent({
                                   _createTextVNode(_toDisplayString(element.title), 1)
                                 ]),
                                 _: 2
-                              }, 1032, ["href"])
+                              }, 1032, ["href"]),
+                              _createElementVNode("div", _hoisted_8, [
+                                (_openBlock(true), _createElementBlock(_Fragment, null, _renderList(__props.project.fields.filter((field) => field.handle !== "status"), (field) => {
+                                  return _openBlock(), _createBlock(_unref(VFieldWrapper), {
+                                    key: field.id,
+                                    card: element,
+                                    field
+                                  }, null, 8, ["card", "field"]);
+                                }), 128))
+                              ])
                             ]),
                             _: 2
                           }, 1024)

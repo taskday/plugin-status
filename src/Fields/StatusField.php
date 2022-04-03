@@ -6,13 +6,8 @@ use Taskday\Base\Field;
 
 class StatusField extends Field
 {
-    const BACKLOG = 'gray';
-    const TODO = 'RED';
-    const INPROGRESS = 'yellow';
-    const COMPLETED = 'GREEN';
-
     /**
-     * Perform any tasks that need to happen when the tool is booted.
+     * Perform any tasks that need to happen when the field is booted.
      *
      * @return void
      */
