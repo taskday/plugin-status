@@ -22,12 +22,6 @@ class BacklogWidget
 
     public function props()
     {
-        return [
-            'cards' => Card::withFieldFilter(StatusField::class, Filter::IS_EQUAL, StatusField::BACKLOG)
-                ->with('project.workspace')
-                ->orderBy('updated_at', 'desc')
-                ->limit(7)
-                ->get()
-        ];
+        return [];
     }
 }

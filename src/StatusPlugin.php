@@ -27,8 +27,6 @@ class StatusPlugin extends Plugin
 
     public function widgets(): array
     {
-        return [
-            new BacklogWidget()
-        ];
+        return [];
     }
 }
