@@ -60,9 +60,9 @@ const _sfc_main$3 = defineComponent$1({
   }
 });
 const _toDisplayString$2 = window["Vue"].toDisplayString;
-const _normalizeClass$1 = window["Vue"].normalizeClass;
+const _normalizeClass = window["Vue"].normalizeClass;
 const _createElementVNode$2 = window["Vue"].createElementVNode;
-const _resolveComponent$1 = window["Vue"].resolveComponent;
+const _resolveComponent$2 = window["Vue"].resolveComponent;
 const _withCtx$2 = window["Vue"].withCtx;
 const _createVNode$3 = window["Vue"].createVNode;
 const _renderList$2 = window["Vue"].renderList;
@@ -71,17 +71,17 @@ const _openBlock$3 = window["Vue"].openBlock;
 const _createElementBlock$3 = window["Vue"].createElementBlock;
 const _createBlock$1 = window["Vue"].createBlock;
 function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_VDropdownButton = _resolveComponent$1("VDropdownButton");
-  const _component_VDropdownItem = _resolveComponent$1("VDropdownItem");
-  const _component_VDropdownItems = _resolveComponent$1("VDropdownItems");
-  const _component_VDropdown = _resolveComponent$1("VDropdown");
+  const _component_VDropdownButton = _resolveComponent$2("VDropdownButton");
+  const _component_VDropdownItem = _resolveComponent$2("VDropdownItem");
+  const _component_VDropdownItems = _resolveComponent$2("VDropdownItems");
+  const _component_VDropdown = _resolveComponent$2("VDropdown");
   return _openBlock$3(), _createElementBlock$3("div", null, [
     _createVNode$3(_component_VDropdown, null, {
       default: _withCtx$2(() => [
         _createVNode$3(_component_VDropdownButton, null, {
           default: _withCtx$2(() => [
             _createElementVNode$2("div", {
-              class: _normalizeClass$1([{
+              class: _normalizeClass([{
                 "bg-gray-100 dark:bg-gray-400 text-gray-600 dark:text-gray-400 dark:bg-opacity-20": _ctx.color === "gray",
                 "bg-red-100 dark:bg-red-400 text-red-600 dark:text-red-400 dark:bg-opacity-20": _ctx.color === "red",
                 "bg-green-100 dark:bg-green-400 text-green-600 dark:text-green-400 dark:bg-opacity-20": _ctx.color === "green",
@@ -119,7 +119,7 @@ const VButton = window["Components"].VButton;
 const VFormInput$1 = window["Components"].VFormInput;
 const VFormSelect = window["Components"].VFormSelect;
 const defineComponent = window["Vue"].defineComponent;
-const onMounted = window["Vue"].onMounted;
+const onMounted$1 = window["Vue"].onMounted;
 const reactive$1 = window["Vue"].reactive;
 const _sfc_main$2 = defineComponent({
   components: {
@@ -138,7 +138,7 @@ const _sfc_main$2 = defineComponent({
       name: "New",
       color: "blue"
     });
-    onMounted(() => {
+    onMounted$1(() => {
       props.form.options = props.form.options || [];
       if (Object.keys(props.form.options).length === 0) {
         props.form.options = [];
@@ -161,7 +161,7 @@ const _createElementBlock$2 = window["Vue"].createElementBlock;
 const _toDisplayString$1 = window["Vue"].toDisplayString;
 const _createElementVNode$1 = window["Vue"].createElementVNode;
 const _createTextVNode$1 = window["Vue"].createTextVNode;
-const _resolveComponent = window["Vue"].resolveComponent;
+const _resolveComponent$1 = window["Vue"].resolveComponent;
 const _withModifiers$1 = window["Vue"].withModifiers;
 const _withCtx$1 = window["Vue"].withCtx;
 const _createVNode$2 = window["Vue"].createVNode;
@@ -173,17 +173,17 @@ const _hoisted_5$1 = { class: "mt-4 space-y-4" };
 const _hoisted_6$1 = { class: "flex items-center space-x-4" };
 const _hoisted_7$1 = /* @__PURE__ */ _createElementVNode$1("option", { value: "blue" }, "blue", -1);
 const _hoisted_8$1 = /* @__PURE__ */ _createElementVNode$1("option", { value: "yellow" }, "yellow", -1);
-const _hoisted_9 = /* @__PURE__ */ _createElementVNode$1("option", { value: "purple" }, "purple", -1);
-const _hoisted_10 = /* @__PURE__ */ _createElementVNode$1("option", { value: "red" }, "red", -1);
-const _hoisted_11 = /* @__PURE__ */ _createElementVNode$1("option", { value: "green" }, "green", -1);
-const _hoisted_12 = /* @__PURE__ */ _createElementVNode$1("option", { value: "teal" }, "teal", -1);
-const _hoisted_13 = /* @__PURE__ */ _createElementVNode$1("option", { value: "gray" }, "gray", -1);
+const _hoisted_9$1 = /* @__PURE__ */ _createElementVNode$1("option", { value: "purple" }, "purple", -1);
+const _hoisted_10$1 = /* @__PURE__ */ _createElementVNode$1("option", { value: "red" }, "red", -1);
+const _hoisted_11$1 = /* @__PURE__ */ _createElementVNode$1("option", { value: "green" }, "green", -1);
+const _hoisted_12$1 = /* @__PURE__ */ _createElementVNode$1("option", { value: "teal" }, "teal", -1);
+const _hoisted_13$1 = /* @__PURE__ */ _createElementVNode$1("option", { value: "gray" }, "gray", -1);
 const _hoisted_14 = /* @__PURE__ */ _createTextVNode$1("Add");
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   var _a;
-  const _component_VButton = _resolveComponent("VButton");
-  const _component_VFormInput = _resolveComponent("VFormInput");
-  const _component_VFormSelect = _resolveComponent("VFormSelect");
+  const _component_VButton = _resolveComponent$1("VButton");
+  const _component_VFormInput = _resolveComponent$1("VFormInput");
+  const _component_VFormSelect = _resolveComponent$1("VFormSelect");
   return _openBlock$2(), _createElementBlock$2("div", null, [
     (_openBlock$2(true), _createElementBlock$2(_Fragment$1, null, _renderList$1((_a = _ctx.form.options) != null ? _a : [], (status) => {
       return _openBlock$2(), _createElementBlock$2("div", {
@@ -224,11 +224,11 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
           default: _withCtx$1(() => [
             _hoisted_7$1,
             _hoisted_8$1,
-            _hoisted_9,
-            _hoisted_10,
-            _hoisted_11,
-            _hoisted_12,
-            _hoisted_13
+            _hoisted_9$1,
+            _hoisted_10$1,
+            _hoisted_11$1,
+            _hoisted_12$1,
+            _hoisted_13$1
           ]),
           _: 1
         }, 8, ["modelValue"])
@@ -6617,26 +6617,54 @@ const _Fragment = window["Vue"].Fragment;
 const _openBlock = window["Vue"].openBlock;
 const _createElementBlock = window["Vue"].createElementBlock;
 const _toDisplayString = window["Vue"].toDisplayString;
-const _normalizeClass = window["Vue"].normalizeClass;
 const _createElementVNode = window["Vue"].createElementVNode;
 const _createTextVNode = window["Vue"].createTextVNode;
+const _resolveComponent = window["Vue"].resolveComponent;
 const _withCtx = window["Vue"].withCtx;
 const _createVNode = window["Vue"].createVNode;
 const _createBlock = window["Vue"].createBlock;
+const _createCommentVNode = window["Vue"].createCommentVNode;
 const _hoisted_1 = { class: "flex flex-col h-full flex-grow" };
 const _hoisted_2 = { class: "-my-2 overflow-x-auto h-full flex-grow pr-16" };
-const _hoisted_3 = { class: "py-2 align-middle inline-block min-w-full h-full flex-grow" };
+const _hoisted_3 = { class: "px-6 pb-4 align-middle inline-block min-w-full h-full flex-grow" };
 const _hoisted_4 = { class: "h-full flex-grow" };
 const _hoisted_5 = { class: "flex mx-auto gap-x-8 overflow-hidden h-full flex-grow pr-16" };
-const _hoisted_6 = { class: "w-96 flex-col flex shrink-0 py-4 rounded translated-container" };
-const _hoisted_7 = { class: "mt-4" };
-const _hoisted_8 = { class: "flex gap-2 items-start mt-2" };
+const _hoisted_6 = { class: "w-96 flex-col flex shrink-0 h-full flex-grow rounded" };
+const _hoisted_7 = { class: "rounded-sm h-6 inline-flex items-center text-xs font-medium uppercase tracking-wide" };
+const _hoisted_8 = { class: "mt-4" };
+const _hoisted_9 = { class: "gap-x-1" };
+const _hoisted_10 = ["onClick"];
+const _hoisted_11 = /* @__PURE__ */ _createElementVNode("svg", {
+  xmlns: "http://www.w3.org/2000/svg",
+  class: "h-5 w-5",
+  fill: "none",
+  viewBox: "0 0 24 24",
+  stroke: "currentColor",
+  "stroke-width": "2"
+}, [
+  /* @__PURE__ */ _createElementVNode("path", {
+    "stroke-linecap": "round",
+    "stroke-linejoin": "round",
+    d: "M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+  }),
+  /* @__PURE__ */ _createElementVNode("path", {
+    "stroke-linecap": "round",
+    "stroke-linejoin": "round",
+    d: "M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+  })
+], -1);
+const _hoisted_12 = [
+  _hoisted_11
+];
+const _hoisted_13 = { class: "flex gap-2 items-start mt-2" };
 const watch = window["Vue"].watch;
 const reactive = window["Vue"].reactive;
+const onMounted = window["Vue"].onMounted;
 const VCard = window["Components"].VCard;
-const VLink = window["Components"].VLink;
 const VFieldWrapper = window["Components"].VFieldWrapper;
 const useCardForm = window["Components"].useCardForm;
+const VDrawer = window["Components"].VDrawer;
+const PageCardsShow = window["Components"].PageCardsShow;
 const _sfc_main = /* @__PURE__ */ _defineComponent({
   props: {
     title: null,
@@ -6650,6 +6678,13 @@ const _sfc_main = /* @__PURE__ */ _defineComponent({
       columns: [],
       options: (_b = (_a = props.project.customFields) == null ? void 0 : _a.status) == null ? void 0 : _b.options,
       selected: null
+    });
+    onMounted(() => {
+      var _a2;
+      let sel = state.selected;
+      if (sel != null) {
+        state.selected = (_a2 = props.project.cards.find((card) => card.id == sel.id)) != null ? _a2 : null;
+      }
     });
     const updateColumn = (column, card) => {
       const { form, update } = useCardForm();
@@ -6673,77 +6708,88 @@ const _sfc_main = /* @__PURE__ */ _defineComponent({
       });
     }, { immediate: true });
     return (_ctx, _cache) => {
-      return _openBlock(), _createElementBlock("div", _hoisted_1, [
-        _createElementVNode("div", _hoisted_2, [
-          _createElementVNode("div", _hoisted_3, [
-            _createElementVNode("div", _hoisted_4, [
-              _createElementVNode("div", _hoisted_5, [
-                (_openBlock(true), _createElementBlock(_Fragment, null, _renderList(_unref(state).columns, (column) => {
-                  return _openBlock(), _createElementBlock("div", _hoisted_6, [
-                    _createElementVNode("div", null, [
-                      _createElementVNode("span", {
-                        class: _normalizeClass(["px-3 rounded h-6 inline-flex items-center text-sm", {
-                          "bg-white dark:bg-gray-400 text-gray-600 dark:text-gray-400 dark:bg-opacity-20": column.color === "gray",
-                          "bg-red-100 dark:bg-red-400 text-red-600 dark:text-red-400 dark:bg-opacity-20": column.color === "red",
-                          "bg-green-100 dark:bg-green-400 text-green-600 dark:text-green-400 dark:bg-opacity-20": column.color === "green",
-                          "bg-yellow-100 dark:bg-yellow-400 text-yellow-600 dark:text-yellow-400 dark:bg-opacity-20": column.color === "yellow",
-                          "bg-blue-100 dark:bg-blue-400 text-blue-600 dark:text-blue-400 dark:bg-opacity-20": column.color === "blue",
-                          "bg-teal-100 dark:bg-teal-400 text-teal-600 dark:text-teal-400 dark:bg-opacity-20": column.color === "teal",
-                          "bg-purple-100 dark:bg-purple-400 text-purple-600 dark:text-purple-400 dark:bg-opacity-20": column.color === "purple"
-                        }])
-                      }, _toDisplayString(column.name), 3)
-                    ]),
-                    _createElementVNode("div", _hoisted_7, [
-                      _createVNode(_unref(draggable), {
-                        class: "space-y-4",
-                        onChange: ({ added }) => added && updateColumn(column, added.element),
-                        modelValue: column.cards,
-                        "onUpdate:modelValue": ($event) => column.cards = $event,
-                        animation: 200,
-                        "ghost-class": "opacity-50",
-                        group: "tasks",
-                        itemKey: "id"
-                      }, {
-                        item: _withCtx(({ element }) => [
-                          _createVNode(_unref(VCard), null, {
-                            default: _withCtx(() => [
-                              _createVNode(_unref(VLink), {
-                                href: _ctx.route("cards.show", element),
-                                class: "flex items-center text-left font-semibold text-sm hover:underline"
-                              }, {
-                                default: _withCtx(() => [
-                                  _createTextVNode(_toDisplayString(element.title), 1)
+      const _component_Link = _resolveComponent("Link");
+      return _openBlock(), _createElementBlock(_Fragment, null, [
+        _createElementVNode("div", _hoisted_1, [
+          _createElementVNode("div", _hoisted_2, [
+            _createElementVNode("div", _hoisted_3, [
+              _createElementVNode("div", _hoisted_4, [
+                _createElementVNode("div", _hoisted_5, [
+                  (_openBlock(true), _createElementBlock(_Fragment, null, _renderList(_unref(state).columns, (column) => {
+                    return _openBlock(), _createElementBlock("div", _hoisted_6, [
+                      _createElementVNode("div", null, [
+                        _createElementVNode("span", _hoisted_7, _toDisplayString(column.name), 1)
+                      ]),
+                      _createElementVNode("div", _hoisted_8, [
+                        _createVNode(_unref(draggable), {
+                          class: "space-y-4",
+                          onChange: ({ added }) => added && updateColumn(column, added.element),
+                          modelValue: column.cards,
+                          "onUpdate:modelValue": ($event) => column.cards = $event,
+                          animation: 200,
+                          "ghost-class": "opacity-50",
+                          group: "tasks",
+                          itemKey: "id"
+                        }, {
+                          item: _withCtx(({ element }) => [
+                            _createVNode(_unref(VCard), null, {
+                              default: _withCtx(() => [
+                                _createElementVNode("div", _hoisted_9, [
+                                  _createVNode(_component_Link, {
+                                    href: _ctx.route("cards.show", element),
+                                    class: "inline-flex items-center text-left md:text-sm font-medium mb-1 hover:underline"
+                                  }, {
+                                    default: _withCtx(() => [
+                                      _createTextVNode(_toDisplayString(element.title), 1)
+                                    ]),
+                                    _: 2
+                                  }, 1032, ["href"]),
+                                  _createElementVNode("button", {
+                                    onClick: ($event) => _unref(state).selected = element,
+                                    class: "inline-flex items-center ml-2"
+                                  }, _hoisted_12, 8, _hoisted_10)
                                 ]),
-                                _: 2
-                              }, 1032, ["href"]),
-                              _createElementVNode("div", _hoisted_8, [
-                                (_openBlock(true), _createElementBlock(_Fragment, null, _renderList(__props.project.fields.filter((field) => field.handle !== "status"), (field) => {
-                                  return _openBlock(), _createBlock(_unref(VFieldWrapper), {
-                                    key: field.id,
-                                    card: element,
-                                    field
-                                  }, null, 8, ["card", "field"]);
-                                }), 128))
-                              ])
-                            ]),
-                            _: 2
-                          }, 1024)
-                        ]),
-                        _: 2
-                      }, 1032, ["onChange", "modelValue", "onUpdate:modelValue"]),
-                      _createVNode(_sfc_main$1, {
-                        class: "mt-4",
-                        project: __props.project,
-                        status: column
-                      }, null, 8, ["project", "status"])
-                    ])
-                  ]);
-                }), 256))
+                                _createElementVNode("div", _hoisted_13, [
+                                  (_openBlock(true), _createElementBlock(_Fragment, null, _renderList(__props.project.fields.filter((field) => field.handle !== "status"), (field) => {
+                                    return _openBlock(), _createBlock(_unref(VFieldWrapper), {
+                                      key: field.id,
+                                      card: element,
+                                      field
+                                    }, null, 8, ["card", "field"]);
+                                  }), 128))
+                                ])
+                              ]),
+                              _: 2
+                            }, 1024)
+                          ]),
+                          _: 2
+                        }, 1032, ["onChange", "modelValue", "onUpdate:modelValue"]),
+                        _createVNode(_sfc_main$1, {
+                          class: "mt-4",
+                          project: __props.project,
+                          status: column
+                        }, null, 8, ["project", "status"])
+                      ])
+                    ]);
+                  }), 256))
+                ])
               ])
             ])
           ])
-        ])
-      ]);
+        ]),
+        _unref(state).selected ? (_openBlock(), _createBlock(_unref(VDrawer), {
+          key: 0,
+          isOpen: true,
+          onClose: () => _unref(state).selected = null
+        }, {
+          default: _withCtx(() => [
+            _createVNode(_unref(PageCardsShow), {
+              card: _unref(state).selected
+            }, null, 8, ["card"])
+          ]),
+          _: 1
+        }, 8, ["onClose"])) : _createCommentVNode("", true)
+      ], 64);
     };
   }
 });

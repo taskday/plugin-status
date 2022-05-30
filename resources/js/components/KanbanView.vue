@@ -1,34 +1,18 @@
 <template>
   <div class="flex flex-col h-full flex-grow">
     <div class="-my-2 overflow-x-auto h-full flex-grow pr-16">
-      <div class="py-2 align-middle inline-block min-w-full h-full flex-grow">
+      <div class="px-6 pb-4 align-middle inline-block min-w-full h-full flex-grow">
         <div class="h-full flex-grow">
           <div
             class="flex mx-auto gap-x-8 overflow-hidden h-full flex-grow pr-16"
           >
             <div
-              class="w-96 flex-col flex shrink-0 py-4 rounded translated-container"
+              class="w-96 flex-col flex shrink-0 h-full flex-grow rounded"
               v-for="column in state.columns"
             >
               <div>
                 <span
-                  class="px-3 rounded h-6 inline-flex items-center text-sm"
-                  :class="{
-                    'bg-white dark:bg-gray-400 text-gray-600 dark:text-gray-400 dark:bg-opacity-20':
-                      column.color === 'gray',
-                    'bg-red-100 dark:bg-red-400 text-red-600 dark:text-red-400 dark:bg-opacity-20':
-                      column.color === 'red',
-                    'bg-green-100 dark:bg-green-400 text-green-600 dark:text-green-400 dark:bg-opacity-20':
-                      column.color === 'green',
-                    'bg-yellow-100 dark:bg-yellow-400 text-yellow-600 dark:text-yellow-400 dark:bg-opacity-20':
-                      column.color === 'yellow',
-                    'bg-blue-100 dark:bg-blue-400 text-blue-600 dark:text-blue-400 dark:bg-opacity-20':
-                      column.color === 'blue',
-                    'bg-teal-100 dark:bg-teal-400 text-teal-600 dark:text-teal-400 dark:bg-opacity-20':
-                      column.color === 'teal',
-                    'bg-purple-100 dark:bg-purple-400 text-purple-600 dark:text-purple-400 dark:bg-opacity-20':
-                      column.color === 'purple',
-                  }"
+                  class="rounded-sm h-6 inline-flex items-center text-xs font-medium uppercase tracking-wide"
                   >{{ column.name }}</span
                 >
               </div>
@@ -46,11 +30,19 @@
                 >
                   <template #item="{ element }">
                     <VCard>
-                      <VLink
-                        :href="route('cards.show', element)"
-                        class="flex items-center text-left font-semibold text-sm hover:underline"
-                        >{{ element.title }}</VLink
-                      >
+                      <div class="gap-x-1">
+                        <Link
+                          :href="route('cards.show', element)"
+                          class="inline-flex items-center text-left md:text-sm font-medium mb-1 hover:underline"
+                          >{{ element.title }}</Link
+                        >
+                        <button @click="state.selected = element" class="inline-flex items-center ml-2">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                          </svg>
+                        </button>
+                      </div>
                       <div class="flex gap-2 items-start mt-2">
                         <VFieldWrapper
                           v-for="field in project.fields.filter(field => field.handle !== 'status')"
@@ -74,13 +66,16 @@
       </div>
     </div>
   </div>
+  <VDrawer v-if="state.selected" :isOpen="true" :onClose="() => state.selected = null">
+    <PageCardsShow :card="state.selected" />
+  </VDrawer>
 </template>
 
 <script setup lang="ts">
 import draggable from "vuedraggable";
-import { watch, reactive } from "vue";
+import { watch, reactive, onMounted } from "vue";
 import KanbanCardForm from "./KanbanCardForm.vue";
-import { VCard, VLink, VFieldWrapper, useCardForm } from "taskday";
+import { VCard, VLink, VFieldWrapper, useCardForm, VDrawer, PageCardsShow } from "taskday";
 
 const props = defineProps<{
   title: String;
@@ -91,19 +86,6 @@ const props = defineProps<{
   project: Project;
 }>();
 
-type Option = { color: string; name: string };
-
-type Card = { fields: any[] };
-type Project = {
-  cards: Card[];
-  customFields: {
-    status: {
-      id: string;
-      options: Option[];
-    };
-  };
-};
-
 const state = reactive<{
   columns: any[];
   selected: Card | null;
@@ -113,6 +95,13 @@ const state = reactive<{
   options: props.project.customFields?.status?.options,
   selected: null,
 });
+
+onMounted(() => {
+  let sel = state.selected;
+  if (sel != null) {
+    state.selected = props.project.cards.find((card: Card) => card.id == sel.id) ?? null;
+  }
+}) 
 
 const updateColumn = (column: any, card: Card) => {
   const { form, update } = useCardForm();
@@ -142,12 +131,4 @@ watch(
   },
   { immediate: true }
 );
-
-// function destroy(status) {
-//   Inertia.delete(route('cards.destroy', state.selected), {
-//     onSuccess: () => {
-//       state.selected = null;
-//     }
-//   })
-// }
 </script>
