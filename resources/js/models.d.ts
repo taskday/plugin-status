@@ -40,6 +40,7 @@ interface Card {
 }
 
 interface Field {
+  id: number;
   title: string;
   handle: string;
   type: string;

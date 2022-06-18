@@ -117,7 +117,7 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
 var StatusField = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["render", _sfc_render$1]]);
 const VButton = window["Components"].VButton;
 const VFormInput$1 = window["Components"].VFormInput;
-const VFormSelect = window["Components"].VFormSelect;
+const VFormSelect$1 = window["Components"].VFormSelect;
 const defineComponent = window["Vue"].defineComponent;
 const onMounted$1 = window["Vue"].onMounted;
 const reactive$1 = window["Vue"].reactive;
@@ -125,7 +125,7 @@ const _sfc_main$2 = defineComponent({
   components: {
     VButton,
     VFormInput: VFormInput$1,
-    VFormSelect
+    VFormSelect: VFormSelect$1
   },
   props: {
     form: {
@@ -178,7 +178,7 @@ const _hoisted_10$1 = /* @__PURE__ */ _createElementVNode$1("option", { value: "
 const _hoisted_11$1 = /* @__PURE__ */ _createElementVNode$1("option", { value: "green" }, "green", -1);
 const _hoisted_12$1 = /* @__PURE__ */ _createElementVNode$1("option", { value: "teal" }, "teal", -1);
 const _hoisted_13$1 = /* @__PURE__ */ _createElementVNode$1("option", { value: "gray" }, "gray", -1);
-const _hoisted_14 = /* @__PURE__ */ _createTextVNode$1("Add");
+const _hoisted_14$1 = /* @__PURE__ */ _createTextVNode$1("Add");
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   var _a;
   const _component_VButton = _resolveComponent$1("VButton");
@@ -238,7 +238,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         onClick: _withModifiers$1(_ctx.add, ["prevent"])
       }, {
         default: _withCtx$1(() => [
-          _hoisted_14
+          _hoisted_14$1
         ]),
         _: 1
       }, 8, ["onClick"])
@@ -6612,29 +6612,32 @@ const _sfc_main$1 = /* @__PURE__ */ _defineComponent$1({
 });
 const _defineComponent = window["Vue"].defineComponent;
 const _unref = window["Vue"].unref;
+const _toDisplayString = window["Vue"].toDisplayString;
+const _createElementVNode = window["Vue"].createElementVNode;
 const _renderList = window["Vue"].renderList;
 const _Fragment = window["Vue"].Fragment;
 const _openBlock = window["Vue"].openBlock;
 const _createElementBlock = window["Vue"].createElementBlock;
-const _toDisplayString = window["Vue"].toDisplayString;
-const _createElementVNode = window["Vue"].createElementVNode;
-const _createTextVNode = window["Vue"].createTextVNode;
-const _resolveComponent = window["Vue"].resolveComponent;
 const _withCtx = window["Vue"].withCtx;
 const _createVNode = window["Vue"].createVNode;
+const _createTextVNode = window["Vue"].createTextVNode;
+const _resolveComponent = window["Vue"].resolveComponent;
 const _createBlock = window["Vue"].createBlock;
 const _createCommentVNode = window["Vue"].createCommentVNode;
-const _hoisted_1 = { class: "flex flex-col h-full flex-grow" };
-const _hoisted_2 = { class: "-my-2 overflow-x-auto h-full flex-grow pr-16" };
-const _hoisted_3 = { class: "px-6 pb-4 align-middle inline-block min-w-full h-full flex-grow" };
-const _hoisted_4 = { class: "h-full flex-grow" };
-const _hoisted_5 = { class: "flex mx-auto gap-x-8 overflow-hidden h-full flex-grow pr-16" };
-const _hoisted_6 = { class: "w-96 flex-col flex shrink-0 h-full flex-grow rounded" };
-const _hoisted_7 = { class: "rounded-sm h-6 inline-flex items-center text-xs font-medium uppercase tracking-wide" };
-const _hoisted_8 = { class: "mt-4" };
-const _hoisted_9 = { class: "gap-x-1" };
-const _hoisted_10 = ["onClick"];
-const _hoisted_11 = /* @__PURE__ */ _createElementVNode("svg", {
+const _hoisted_1 = { class: "px-6 mb-4" };
+const _hoisted_2 = /* @__PURE__ */ _createElementVNode("option", { value: "" }, /* @__PURE__ */ _toDisplayString("Select a field"), -1);
+const _hoisted_3 = ["value"];
+const _hoisted_4 = { class: "flex flex-col h-full flex-grow" };
+const _hoisted_5 = { class: "-my-2 overflow-x-auto h-full flex-grow pr-16" };
+const _hoisted_6 = { class: "px-6 pb-4 align-middle inline-block min-w-full h-full flex-grow" };
+const _hoisted_7 = { class: "h-full flex-grow" };
+const _hoisted_8 = { class: "flex mx-auto gap-x-8 overflow-hidden h-full flex-grow pr-16" };
+const _hoisted_9 = { class: "w-96 flex-col flex shrink-0 h-full flex-grow rounded" };
+const _hoisted_10 = { class: "rounded-sm h-6 inline-flex items-center text-xs font-medium uppercase tracking-wide" };
+const _hoisted_11 = { class: "mt-4" };
+const _hoisted_12 = { class: "gap-x-1" };
+const _hoisted_13 = ["onClick"];
+const _hoisted_14 = /* @__PURE__ */ _createElementVNode("svg", {
   xmlns: "http://www.w3.org/2000/svg",
   class: "h-5 w-5",
   fill: "none",
@@ -6653,14 +6656,15 @@ const _hoisted_11 = /* @__PURE__ */ _createElementVNode("svg", {
     d: "M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
   })
 ], -1);
-const _hoisted_12 = [
-  _hoisted_11
+const _hoisted_15 = [
+  _hoisted_14
 ];
-const _hoisted_13 = { class: "flex gap-2 items-start mt-2" };
+const _hoisted_16 = { class: "flex gap-2 items-start mt-2" };
 const watch = window["Vue"].watch;
 const reactive = window["Vue"].reactive;
 const onMounted = window["Vue"].onMounted;
 const VCard = window["Components"].VCard;
+const VFormSelect = window["Components"].VFormSelect;
 const VFieldWrapper = window["Components"].VFieldWrapper;
 const useCardForm = window["Components"].useCardForm;
 const VDrawer = window["Components"].VDrawer;
@@ -6672,12 +6676,13 @@ const _sfc_main = /* @__PURE__ */ _defineComponent({
     project: null
   },
   setup(__props) {
-    var _a, _b;
+    var _a;
     const props = __props;
     const state = reactive({
       columns: [],
-      options: (_b = (_a = props.project.customFields) == null ? void 0 : _a.status) == null ? void 0 : _b.options,
-      selected: null
+      options: props.project.fields.find((field) => field.type === "status").options,
+      selected: null,
+      currentHandle: (_a = localStorage.getItem(props.project.id + "_kanbanview-status-handle")) != null ? _a : props.project.fields.find((field) => field.type === "status").handle
     });
     onMounted(() => {
       var _a2;
@@ -6689,38 +6694,62 @@ const _sfc_main = /* @__PURE__ */ _defineComponent({
     const updateColumn = (column, card) => {
       const { form, update } = useCardForm();
       form.fields = {
-        status: column.color
+        [state.currentHandle]: column.color
       };
       update(card);
     };
     const cardsForOption = (option2) => {
       return props.project.cards.filter((card) => {
         var _a2;
-        return (_a2 = card.fields) == null ? void 0 : _a2.some((f) => f.handle === "status" && f.pivot.value == option2.color);
+        return (_a2 = card.fields) == null ? void 0 : _a2.some((f) => f.handle === state.currentHandle && f.pivot.value == option2.color);
       });
     };
-    watch(() => props.project, () => {
+    watch(() => props.project + state.currentHandle, () => {
       var _a2;
-      state.columns = (_a2 = state.options) == null ? void 0 : _a2.map((option2) => {
-        return __spreadProps(__spreadValues({}, option2), {
-          cards: cardsForOption(option2)
+      localStorage.setItem(props.project.id + "_kanbanview-status-handle", state.currentHandle);
+      let statusField = props.project.fields.find((field) => field.handle === state.currentHandle);
+      if (statusField) {
+        state.options = statusField.options;
+        state.columns = (_a2 = state.options) == null ? void 0 : _a2.map((option2) => {
+          return __spreadProps(__spreadValues({}, option2), {
+            cards: cardsForOption(option2)
+          });
         });
-      });
+      }
     }, { immediate: true });
     return (_ctx, _cache) => {
       const _component_Link = _resolveComponent("Link");
       return _openBlock(), _createElementBlock(_Fragment, null, [
         _createElementVNode("div", _hoisted_1, [
-          _createElementVNode("div", _hoisted_2, [
-            _createElementVNode("div", _hoisted_3, [
-              _createElementVNode("div", _hoisted_4, [
-                _createElementVNode("div", _hoisted_5, [
+          _createElementVNode("div", null, [
+            _createVNode(_unref(VFormSelect), {
+              modelValue: _unref(state).currentHandle,
+              "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _unref(state).currentHandle = $event),
+              class: "max-w-xs"
+            }, {
+              default: _withCtx(() => [
+                _hoisted_2,
+                (_openBlock(true), _createElementBlock(_Fragment, null, _renderList(__props.project.fields, (field) => {
+                  return _openBlock(), _createElementBlock("option", {
+                    value: field.handle
+                  }, _toDisplayString(field.title), 9, _hoisted_3);
+                }), 256))
+              ]),
+              _: 1
+            }, 8, ["modelValue"])
+          ])
+        ]),
+        _createElementVNode("div", _hoisted_4, [
+          _createElementVNode("div", _hoisted_5, [
+            _createElementVNode("div", _hoisted_6, [
+              _createElementVNode("div", _hoisted_7, [
+                _createElementVNode("div", _hoisted_8, [
                   (_openBlock(true), _createElementBlock(_Fragment, null, _renderList(_unref(state).columns, (column) => {
-                    return _openBlock(), _createElementBlock("div", _hoisted_6, [
+                    return _openBlock(), _createElementBlock("div", _hoisted_9, [
                       _createElementVNode("div", null, [
-                        _createElementVNode("span", _hoisted_7, _toDisplayString(column.name), 1)
+                        _createElementVNode("span", _hoisted_10, _toDisplayString(column.name), 1)
                       ]),
-                      _createElementVNode("div", _hoisted_8, [
+                      _createElementVNode("div", _hoisted_11, [
                         _createVNode(_unref(draggable), {
                           class: "space-y-4",
                           onChange: ({ added }) => added && updateColumn(column, added.element),
@@ -6734,7 +6763,7 @@ const _sfc_main = /* @__PURE__ */ _defineComponent({
                           item: _withCtx(({ element }) => [
                             _createVNode(_unref(VCard), null, {
                               default: _withCtx(() => [
-                                _createElementVNode("div", _hoisted_9, [
+                                _createElementVNode("div", _hoisted_12, [
                                   _createVNode(_component_Link, {
                                     href: _ctx.route("cards.show", element),
                                     class: "inline-flex items-center text-left md:text-sm font-medium mb-1 hover:underline"
@@ -6747,9 +6776,9 @@ const _sfc_main = /* @__PURE__ */ _defineComponent({
                                   _createElementVNode("button", {
                                     onClick: ($event) => _unref(state).selected = element,
                                     class: "inline-flex items-center ml-2"
-                                  }, _hoisted_12, 8, _hoisted_10)
+                                  }, _hoisted_15, 8, _hoisted_13)
                                 ]),
-                                _createElementVNode("div", _hoisted_13, [
+                                _createElementVNode("div", _hoisted_16, [
                                   (_openBlock(true), _createElementBlock(_Fragment, null, _renderList(__props.project.fields.filter((field) => field.handle !== "status"), (field) => {
                                     return _openBlock(), _createBlock(_unref(VFieldWrapper), {
                                       key: field.id,
