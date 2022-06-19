@@ -8111,7 +8111,7 @@ const _hoisted_14 = /* @__PURE__ */ _createElementVNode("svg", {
 const _hoisted_15 = [
   _hoisted_14
 ];
-const _hoisted_16 = { class: "flex gap-2 items-start mt-2" };
+const _hoisted_16 = { class: "flex flex-wrap gap-2 items-start mt-2" };
 const watch = window["Vue"].watch;
 const ref = window["Vue"].ref;
 const reactive = window["Vue"].reactive;
@@ -8179,7 +8179,7 @@ const _sfc_main = /* @__PURE__ */ _defineComponent({
         _createElementVNode("div", _hoisted_1, [
           _createElementVNode("div", _hoisted_2, [
             _createVNode(_unref(VFormList), {
-              selected: (_a = __props.project.fields.find((field) => field.handle === _unref(currentStatusHandle))) != null ? _a : __props.project.fields[0],
+              selected: (_a = __props.project.fields.find((field) => field.handle === _unref(currentStatusHandle))) != null ? _a : __props.project.fields.find((field) => field.type === "status"),
               options: __props.project.fields.filter((field) => field.type === "status"),
               onChange: updateCurrentField
             }, {
