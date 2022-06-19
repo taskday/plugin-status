@@ -59,10 +59,10 @@
                 >
                   <template #item="{ element }">
                     <VCard>
-                      <div class="gap-x-1">
+                      <div class="flex items-start gap-x-1 mb-1 justify-between">
                         <Link
                           :href="route('cards.show', element)"
-                          class="inline-flex items-center text-left md:text-sm font-medium mb-1 hover:underline"
+                          class="inline-flex items-center text-left md:text-sm font-medium hover:underline"
                           >{{ element.title }}</Link
                         >
                         <button
@@ -92,7 +92,7 @@
                       </div>
                       <div class="flex flex-wrap gap-2 items-start mt-2">
                         <VFieldWrapper
-                          v-for="field in project.fields"
+                          v-for="field in project.fields.filter(f => f.handle !== currentStatusHandle)"
                           :key="field.id"
                           :card="element"
                           :field="field"
@@ -151,7 +151,7 @@ onMounted(() => {
   }
 
   let statusField = props.project.fields
-    .find((field) => field.handle === currentStatusHandle.value) ?? props.project.fields[0];
+    .find((field) => field.handle === currentStatusHandle.value) ?? props.project.fields.find(f => f.type == 'status');
 
   currentStatusHandle.value = statusField.handle;
 

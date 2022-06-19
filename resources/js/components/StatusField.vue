@@ -1,7 +1,7 @@
 <template>
   <div>
-    <VDropdown>
-      <VDropdownButton>
+    <VDropdown class="h-full">
+      <VDropdownButton class="h-full">
         <div
           :class="{
             'bg-gray-100 dark:bg-gray-400 text-gray-600 dark:text-gray-400 dark:bg-opacity-20': color === 'gray',
@@ -11,7 +11,7 @@
             'bg-blue-100 dark:bg-blue-400 text-blue-600 dark:text-blue-400 dark:bg-opacity-20': color === 'blue',
             'bg-purple-100 dark:bg-purple-400 text-purple-600 dark:text-purple-400 dark:bg-opacity-20': color === 'purple',
           }"
-          class="rounded transition font-medium text-sm h-6 whitespace-nowrap w-auto px-4 flex items-center justify-center"
+          class="rounded transition font-medium h-full text-sm whitespace-nowrap w-auto px-4 flex items-center justify-center"
         >{{ name }}</div>
       </VDropdownButton>
       <VDropdownItems>

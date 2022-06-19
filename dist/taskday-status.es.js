@@ -76,9 +76,9 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_VDropdownItems = _resolveComponent$2("VDropdownItems");
   const _component_VDropdown = _resolveComponent$2("VDropdown");
   return _openBlock$3(), _createElementBlock$3("div", null, [
-    _createVNode$3(_component_VDropdown, null, {
+    _createVNode$3(_component_VDropdown, { class: "h-full" }, {
       default: _withCtx$2(() => [
-        _createVNode$3(_component_VDropdownButton, null, {
+        _createVNode$3(_component_VDropdownButton, { class: "h-full" }, {
           default: _withCtx$2(() => [
             _createElementVNode$2("div", {
               class: _normalizeClass([{
@@ -88,7 +88,7 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
                 "bg-yellow-100 dark:bg-yellow-400 text-yellow-600 dark:text-yellow-400 dark:bg-opacity-20": _ctx.color === "yellow",
                 "bg-blue-100 dark:bg-blue-400 text-blue-600 dark:text-blue-400 dark:bg-opacity-20": _ctx.color === "blue",
                 "bg-purple-100 dark:bg-purple-400 text-purple-600 dark:text-purple-400 dark:bg-opacity-20": _ctx.color === "purple"
-              }, "rounded transition font-medium text-sm h-6 whitespace-nowrap w-auto px-4 flex items-center justify-center"])
+              }, "rounded transition font-medium h-full text-sm whitespace-nowrap w-auto px-4 flex items-center justify-center"])
             }, _toDisplayString$2(_ctx.name), 3)
           ]),
           _: 1
@@ -8087,7 +8087,7 @@ const _hoisted_8 = { class: "flex mx-auto gap-x-8 overflow-hidden h-full flex-gr
 const _hoisted_9 = { class: "w-96 flex-col flex shrink-0 h-full flex-grow rounded" };
 const _hoisted_10 = { class: "rounded-sm h-6 inline-flex items-center text-xs font-medium uppercase tracking-wide" };
 const _hoisted_11 = { class: "mt-4" };
-const _hoisted_12 = { class: "gap-x-1" };
+const _hoisted_12 = { class: "flex items-start gap-x-1 mb-1 justify-between" };
 const _hoisted_13 = ["onClick"];
 const _hoisted_14 = /* @__PURE__ */ _createElementVNode("svg", {
   xmlns: "http://www.w3.org/2000/svg",
@@ -8139,7 +8139,7 @@ const _sfc_main = /* @__PURE__ */ _defineComponent({
       if (sel != null) {
         state.selected = (_a = props.project.cards.find((card) => card.id == sel.id)) != null ? _a : null;
       }
-      let statusField = (_b = props.project.fields.find((field) => field.handle === currentStatusHandle.value)) != null ? _b : props.project.fields[0];
+      let statusField = (_b = props.project.fields.find((field) => field.handle === currentStatusHandle.value)) != null ? _b : props.project.fields.find((f) => f.type == "status");
       currentStatusHandle.value = statusField.handle;
       columns.value = (_c = statusField == null ? void 0 : statusField.options) == null ? void 0 : _c.map((option2) => {
         return __spreadProps(__spreadValues({}, option2), {
@@ -8221,7 +8221,7 @@ const _sfc_main = /* @__PURE__ */ _defineComponent({
                                 _createElementVNode("div", _hoisted_12, [
                                   _createVNode(_component_Link, {
                                     href: _ctx.route("cards.show", element),
-                                    class: "inline-flex items-center text-left md:text-sm font-medium mb-1 hover:underline"
+                                    class: "inline-flex items-center text-left md:text-sm font-medium hover:underline"
                                   }, {
                                     default: _withCtx(() => [
                                       _createTextVNode(_toDisplayString(element.title), 1)
@@ -8234,7 +8234,7 @@ const _sfc_main = /* @__PURE__ */ _defineComponent({
                                   }, _hoisted_15, 8, _hoisted_13)
                                 ]),
                                 _createElementVNode("div", _hoisted_16, [
-                                  (_openBlock(true), _createElementBlock(_Fragment, null, _renderList(__props.project.fields, (field) => {
+                                  (_openBlock(true), _createElementBlock(_Fragment, null, _renderList(__props.project.fields.filter((f) => f.handle !== _unref(currentStatusHandle)), (field) => {
                                     return _openBlock(), _createBlock(_unref(VFieldWrapper), {
                                       key: field.id,
                                       card: element,
