@@ -105,6 +105,7 @@
                   class="mt-4"
                   :project="project"
                   :status="column"
+                  :handle="currentStatusHandle"
                 />
               </div>
             </div>
@@ -139,7 +140,7 @@ const props = defineProps<{
 }>();
 
 const state = reactive({ selected: null });
-const currentStatusHandle = useStorage( props.project.id + "_kanbanview-status-handle", null);
+const currentStatusHandle = useStorage<string>( props.project.id + "_kanbanview-status-handle", null);
 const columns = ref([]);
 
 onMounted(() => {

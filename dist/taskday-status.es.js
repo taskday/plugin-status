@@ -6585,14 +6585,15 @@ const useCardForm$1 = window["Components"].useCardForm;
 const _sfc_main$1 = /* @__PURE__ */ _defineComponent$1({
   props: {
     status: null,
-    project: null
+    project: null,
+    handle: null
   },
   setup(__props) {
     const props = __props;
     const { form, store } = useCardForm$1();
     function save2() {
       form.fields = {
-        "status": props.status.color
+        [props.handle]: props.status.color
       };
       store(props.project);
     }
@@ -8251,8 +8252,9 @@ const _sfc_main = /* @__PURE__ */ _defineComponent({
                         _createVNode(_sfc_main$1, {
                           class: "mt-4",
                           project: __props.project,
-                          status: column
-                        }, null, 8, ["project", "status"])
+                          status: column,
+                          handle: _unref(currentStatusHandle)
+                        }, null, 8, ["project", "status", "handle"])
                       ])
                     ]);
                   }), 256))

@@ -10,13 +10,14 @@ import {VFormInput, useCardForm} from 'taskday';
 const props = defineProps<{
   status: { id: number, name: string, color: string },
   project: Project,
+  handle: string;
 }>()
 
 const { form, store } = useCardForm();
 
 function save() {
   form.fields = {
-    'status': props.status.color
+   [props.handle]: props.status.color
   }
 
   store(props.project)
