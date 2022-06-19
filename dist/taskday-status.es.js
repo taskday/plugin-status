@@ -8180,7 +8180,7 @@ const _sfc_main = /* @__PURE__ */ _defineComponent({
           _createElementVNode("div", _hoisted_2, [
             _createVNode(_unref(VFormList), {
               selected: (_a = __props.project.fields.find((field) => field.handle === _unref(currentStatusHandle))) != null ? _a : __props.project.fields[0],
-              options: __props.project.fields,
+              options: __props.project.fields.filter((field) => field.type === "status"),
               onChange: updateCurrentField
             }, {
               trigger: _withCtx(({ item }) => {

@@ -3,7 +3,7 @@
     <div class="px-6">
       <VFormList
         :selected="project.fields.find(field => field.handle === currentStatusHandle) ?? project.fields[0]"
-        :options="project.fields"
+        :options="project.fields.filter(field => field.type === 'status')"
         @change="updateCurrentField"
       >
         <template #trigger="{ item }">
