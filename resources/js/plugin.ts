@@ -7,7 +7,7 @@ document.addEventListener('taskday:init', () => {
     field: StatusField,
     options: StatusOptions,
     views: [
-      { id: 'performing-kanban', name: 'Board', component: KanbanView },
+      { id: 'performing-kanban', title: 'Board', component: KanbanView, needs: ['status'] },
     ]
   });
 })

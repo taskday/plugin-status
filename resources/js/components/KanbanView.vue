@@ -1,12 +1,29 @@
 <template>
-  <div class="px-6 mb-4">
-    <div>
-      <VFormSelect v-model="state.currentHandle" class="max-w-xs">
-        <option value="">{{ "Select a field" }}</option>
-        <option v-for="field in project.fields" :value="field.handle">
-          {{ field.title }}
-        </option>
-      </VFormSelect>
+  <div class="mb-8 flex items-center">
+    <div class="px-6">
+      <VFormList
+        :selected="project.fields.find(field => field.handle === currentStatusHandle) ?? project.fields[0]"
+        :options="project.fields"
+        @change="updateCurrentField"
+      >
+        <template #trigger="{ item }">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6 mr-2"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"
+            />
+          </svg>
+          <span>{{ item?.title ?? item?.name }}</span>
+        </template>
+      </VFormList>
     </div>
   </div>
   <div class="flex flex-col h-full flex-grow">
@@ -20,7 +37,7 @@
           >
             <div
               class="w-96 flex-col flex shrink-0 h-full flex-grow rounded"
-              v-for="column in state.columns"
+              v-for="column in columns"
             >
               <div>
                 <span
@@ -75,9 +92,7 @@
                       </div>
                       <div class="flex gap-2 items-start mt-2">
                         <VFieldWrapper
-                          v-for="field in project.fields.filter(
-                            (field) => field.handle !== 'status'
-                          )"
+                          v-for="field in project.fields"
                           :key="field.id"
                           :card="element"
                           :field="field"
@@ -109,16 +124,10 @@
 
 <script setup lang="ts">
 import draggable from "vuedraggable";
-import { watch, reactive, onMounted } from "vue";
+import { watch, ref, reactive, onMounted, computed } from "vue";
 import KanbanCardForm from "./KanbanCardForm.vue";
-import {
-  VCard,
-  VFormSelect,
-  VFieldWrapper,
-  useCardForm,
-  VDrawer,
-  PageCardsShow,
-} from "taskday";
+import { VCard, VFormList, VFieldWrapper, useCardForm, VDrawer, PageCardsShow } from "taskday";
+import { useStorage } from "@vueuse/core";
 
 const props = defineProps<{
   title: String;
@@ -129,20 +138,9 @@ const props = defineProps<{
   project: Project;
 }>();
 
-const state = reactive<{
-  columns: any[];
-  selected: Card | null;
-  options: Option[];
-  currentHandle: string;
-}>({
-  columns: [],
-  options: props.project.fields.find((field) => field.type === "status")
-    .options,
-  selected: null,
-  currentHandle:
-    localStorage.getItem(props.project.id + "_kanbanview-status-handle") ??
-    props.project.fields.find((field) => field.type === "status").handle,
-});
+const state = reactive({ selected: null });
+const currentStatusHandle = useStorage( props.project.id + "_kanbanview-status-handle", null);
+const columns = ref([]);
 
 onMounted(() => {
   let sel = state.selected;
@@ -151,12 +149,26 @@ onMounted(() => {
     state.selected =
       props.project.cards.find((card: Card) => card.id == sel.id) ?? null;
   }
+
+  let statusField = props.project.fields
+    .find((field) => field.handle === currentStatusHandle.value) ?? props.project.fields[0];
+
+  currentStatusHandle.value = statusField.handle;
+
+  columns.value = statusField
+    ?.options?.map((option) => {
+      return {
+        ...option,
+        cards: cardsForOption(option),
+      };
+    });
 });
 
 const updateColumn = (column: any, card: Card) => {
   const { form, update } = useCardForm();
   form.fields = {
-    [state.currentHandle]: column.color,
+    //@ts-ignore
+    [currentStatusHandle.value]: column.color,
   };
   update(card);
 };
@@ -164,31 +176,28 @@ const updateColumn = (column: any, card: Card) => {
 const cardsForOption = (option: Option): Card[] => {
   return props.project.cards.filter((card) => {
     return card.fields?.some(
-      (f) => f.handle === state.currentHandle && f.pivot.value == option.color
+      (f) =>
+        f.handle === currentStatusHandle.value && f.pivot.value == option.color
     );
   });
 };
 
+const updateCurrentField = (field: Field) => {
+  currentStatusHandle.value = field.handle;
+  columns.value = props.project.fields
+    .find((field) => field.handle === currentStatusHandle.value)
+    ?.options?.map((option) => {
+      return {
+        ...option,
+        cards: cardsForOption(option),
+      };
+    });
+};
+
 watch(
-  () => props.project + state.currentHandle,
+  () => currentStatusHandle.value,
   () => {
-    localStorage.setItem(
-      props.project.id + "_kanbanview-status-handle",
-      state.currentHandle
-    );
-    let statusField = props.project.fields.find(
-      (field) => field.handle === state.currentHandle
-    );
-    if (statusField) {
-      state.options = statusField.options;
-      state.columns = state.options?.map((option) => {
-        return {
-          ...option,
-          cards: cardsForOption(option),
-        };
-      });
-    }
-  },
-  { immediate: true }
+    console.log("currentStatusHandle", currentStatusHandle.value);
+  }
 );
 </script>

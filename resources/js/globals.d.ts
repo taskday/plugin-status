@@ -12,8 +12,8 @@ declare global {
         field: ReturnType<typeof defineComponent>,
         filter?: ReturnType<typeof defineComponent>,
         options?: ReturnType<typeof defineComponent>
-        views?: {id: string, name: string, component: ReturnType<typeof defineComponent>}[]
-        widgets?: {id: string, name: string, component: ReturnType<typeof defineComponent>}[]
+        views?: {id: string, title: string, component: ReturnType<typeof defineComponent>, needs: string[] }[]
+        widgets?: {id: string, title: string, component: ReturnType<typeof defineComponent>}[]
     }): void
   }
 
