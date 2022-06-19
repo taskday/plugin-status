@@ -2,7 +2,7 @@
   <div class="mb-8 flex items-center">
     <div class="px-6">
       <VFormList
-        :selected="project.fields.find(field => field.handle === currentStatusHandle) ?? project.fields[0]"
+        :selected="project.fields.find(field => field.handle === currentStatusHandle) ?? project.fields.find(field => field.type === 'status')"
         :options="project.fields.filter(field => field.type === 'status')"
         @change="updateCurrentField"
       >
@@ -90,7 +90,7 @@
                           </svg>
                         </button>
                       </div>
-                      <div class="flex gap-2 items-start mt-2">
+                      <div class="flex flex-wrap gap-2 items-start mt-2">
                         <VFieldWrapper
                           v-for="field in project.fields"
                           :key="field.id"
