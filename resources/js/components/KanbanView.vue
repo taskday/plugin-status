@@ -40,10 +40,18 @@
               v-for="column in columns"
             >
               <div>
-                <span
-                  class="rounded-sm h-6 inline-flex items-center text-xs font-medium uppercase tracking-wide"
-                  >{{ column.name }}</span
-                >
+                <span class="rounded-sm h-6 gap-3 pl-1 inline-flex items-center text-xs font-medium uppercase tracking-wide">
+                  <span :class="{
+                      'block h-3 w-3 rounded-full border border-gray-600 bg-white dark:border-gray-400 dark:bg-gray-400 dark:bg-opacity-20': column.color === 'gray',
+                      'block h-3 w-3 rounded-full border border-red-600 bg-red-100 dark:border-red-400 dark:bg-red-400 dark:bg-opacity-20': column.color === 'red',
+                      'block h-3 w-3 rounded-full border border-green-600 bg-green-100 dark:border-green-400 dark:bg-green-400 dark:bg-opacity-20': column.color === 'green',
+                      'block h-3 w-3 rounded-full border border-yellow-600 bg-yellow-100 dark:border-yellow-400 dark:bg-yellow-400 dark:bg-opacity-20': column.color === 'yellow',
+                      'block h-3 w-3 rounded-full border border-blue-600 bg-blue-100 dark:border-blue-400 dark:bg-blue-400 dark:bg-opacity-20': column.color === 'blue',
+                      'block h-3 w-3 rounded-full border border-teal-600 bg-teal-100 dark:border-teal-400 dark:bg-teal-400 dark:bg-opacity-20': column.color === 'teal',
+                      'block h-3 w-3 rounded-full border border-purple-600 bg-purple-100 dark:border-purple-400 dark:bg-purple-400 dark:bg-opacity-20': column.color === 'purple',
+                    }"></span>
+                  {{ column.name }}
+                </span>
               </div>
               <div class="mt-4">
                 <draggable

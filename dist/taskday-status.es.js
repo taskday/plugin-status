@@ -60,7 +60,7 @@ const _sfc_main$3 = defineComponent$1({
   }
 });
 const _toDisplayString$2 = window["Vue"].toDisplayString;
-const _normalizeClass = window["Vue"].normalizeClass;
+const _normalizeClass$1 = window["Vue"].normalizeClass;
 const _createElementVNode$2 = window["Vue"].createElementVNode;
 const _resolveComponent$2 = window["Vue"].resolveComponent;
 const _withCtx$2 = window["Vue"].withCtx;
@@ -81,7 +81,7 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
         _createVNode$3(_component_VDropdownButton, { class: "h-full" }, {
           default: _withCtx$2(() => [
             _createElementVNode$2("div", {
-              class: _normalizeClass([{
+              class: _normalizeClass$1([{
                 "bg-gray-100 dark:bg-gray-400 text-gray-600 dark:text-gray-400 dark:bg-opacity-20": _ctx.color === "gray",
                 "bg-red-100 dark:bg-red-400 text-red-600 dark:text-red-400 dark:bg-opacity-20": _ctx.color === "red",
                 "bg-green-100 dark:bg-green-400 text-green-600 dark:text-green-400 dark:bg-opacity-20": _ctx.color === "green",
@@ -8060,6 +8060,7 @@ const _withCtx = window["Vue"].withCtx;
 const _createVNode = window["Vue"].createVNode;
 const _renderList = window["Vue"].renderList;
 const _Fragment = window["Vue"].Fragment;
+const _normalizeClass = window["Vue"].normalizeClass;
 const _createTextVNode = window["Vue"].createTextVNode;
 const _resolveComponent = window["Vue"].resolveComponent;
 const _createBlock = window["Vue"].createBlock;
@@ -8086,7 +8087,7 @@ const _hoisted_6 = { class: "px-6 pb-4 align-middle inline-block min-w-full h-fu
 const _hoisted_7 = { class: "h-full flex-grow" };
 const _hoisted_8 = { class: "flex mx-auto gap-x-8 overflow-hidden h-full flex-grow pr-16" };
 const _hoisted_9 = { class: "w-96 flex-col flex shrink-0 h-full flex-grow rounded" };
-const _hoisted_10 = { class: "rounded-sm h-6 inline-flex items-center text-xs font-medium uppercase tracking-wide" };
+const _hoisted_10 = { class: "rounded-sm h-6 gap-3 pl-1 inline-flex items-center text-xs font-medium uppercase tracking-wide" };
 const _hoisted_11 = { class: "mt-4" };
 const _hoisted_12 = { class: "flex items-start gap-x-1 mb-1 justify-between" };
 const _hoisted_13 = ["onClick"];
@@ -8203,7 +8204,20 @@ const _sfc_main = /* @__PURE__ */ _defineComponent({
                   (_openBlock(true), _createElementBlock(_Fragment, null, _renderList(columns.value, (column) => {
                     return _openBlock(), _createElementBlock("div", _hoisted_9, [
                       _createElementVNode("div", null, [
-                        _createElementVNode("span", _hoisted_10, _toDisplayString(column.name), 1)
+                        _createElementVNode("span", _hoisted_10, [
+                          _createElementVNode("span", {
+                            class: _normalizeClass({
+                              "block h-3 w-3 rounded-full border border-gray-600 bg-white dark:border-gray-400 dark:bg-gray-400 dark:bg-opacity-20": column.color === "gray",
+                              "block h-3 w-3 rounded-full border border-red-600 bg-red-100 dark:border-red-400 dark:bg-red-400 dark:bg-opacity-20": column.color === "red",
+                              "block h-3 w-3 rounded-full border border-green-600 bg-green-100 dark:border-green-400 dark:bg-green-400 dark:bg-opacity-20": column.color === "green",
+                              "block h-3 w-3 rounded-full border border-yellow-600 bg-yellow-100 dark:border-yellow-400 dark:bg-yellow-400 dark:bg-opacity-20": column.color === "yellow",
+                              "block h-3 w-3 rounded-full border border-blue-600 bg-blue-100 dark:border-blue-400 dark:bg-blue-400 dark:bg-opacity-20": column.color === "blue",
+                              "block h-3 w-3 rounded-full border border-teal-600 bg-teal-100 dark:border-teal-400 dark:bg-teal-400 dark:bg-opacity-20": column.color === "teal",
+                              "block h-3 w-3 rounded-full border border-purple-600 bg-purple-100 dark:border-purple-400 dark:bg-purple-400 dark:bg-opacity-20": column.color === "purple"
+                            })
+                          }, null, 2),
+                          _createTextVNode(" " + _toDisplayString(column.name), 1)
+                        ])
                       ]),
                       _createElementVNode("div", _hoisted_11, [
                         _createVNode(_unref(draggable), {
