@@ -119,7 +119,7 @@ const VButton = window["Components"].VButton;
 const VFormInput$1 = window["Components"].VFormInput;
 const VFormSelect = window["Components"].VFormSelect;
 const defineComponent = window["Vue"].defineComponent;
-const onMounted$1 = window["Vue"].onMounted;
+const onMounted = window["Vue"].onMounted;
 const reactive$2 = window["Vue"].reactive;
 const _sfc_main$2 = defineComponent({
   components: {
@@ -138,7 +138,7 @@ const _sfc_main$2 = defineComponent({
       name: "New",
       color: "blue"
     });
-    onMounted$1(() => {
+    onMounted(() => {
       props.form.options = props.form.options || [];
       if (Object.keys(props.form.options).length === 0) {
         props.form.options = [];
@@ -8113,16 +8113,17 @@ const _hoisted_14 = /* @__PURE__ */ _createElementVNode("svg", {
 const _hoisted_15 = [
   _hoisted_14
 ];
-const _hoisted_16 = { class: "flex flex-wrap gap-2 items-start mt-2" };
+const _hoisted_16 = { class: "truncate" };
+const _hoisted_17 = { class: "flex flex-wrap gap-2 items-start mt-2" };
 const watch = window["Vue"].watch;
 const ref = window["Vue"].ref;
 const reactive = window["Vue"].reactive;
-const onMounted = window["Vue"].onMounted;
 const VCard = window["Components"].VCard;
 const VFormList = window["Components"].VFormList;
 const VFieldWrapper = window["Components"].VFieldWrapper;
 const useCardForm = window["Components"].useCardForm;
 const VDrawer = window["Components"].VDrawer;
+const VBreadcrumbs = window["Components"].VBreadcrumbs;
 const PageCardsShow = window["Components"].PageCardsShow;
 const _sfc_main = /* @__PURE__ */ _defineComponent({
   props: {
@@ -8135,20 +8136,6 @@ const _sfc_main = /* @__PURE__ */ _defineComponent({
     const state = reactive({ selected: null });
     const currentStatusHandle = useStorage(props.project.id + "_kanbanview-status-handle", null);
     const columns = ref([]);
-    onMounted(() => {
-      var _a, _b, _c;
-      let sel = state.selected;
-      if (sel != null) {
-        state.selected = (_a = props.project.cards.find((card) => card.id == sel.id)) != null ? _a : null;
-      }
-      let statusField = (_b = props.project.fields.find((field) => field.handle === currentStatusHandle.value)) != null ? _b : props.project.fields.find((f) => f.type == "status");
-      currentStatusHandle.value = statusField.handle;
-      columns.value = (_c = statusField == null ? void 0 : statusField.options) == null ? void 0 : _c.map((option2) => {
-        return __spreadProps(__spreadValues({}, option2), {
-          cards: cardsForOption(option2)
-        });
-      });
-    });
     const updateColumn = (column, card) => {
       const { form, update } = useCardForm();
       form.fields = {
@@ -8174,6 +8161,20 @@ const _sfc_main = /* @__PURE__ */ _defineComponent({
     watch(() => currentStatusHandle.value, () => {
       console.log("currentStatusHandle", currentStatusHandle.value);
     });
+    watch(() => props.project, () => {
+      var _a, _b, _c;
+      let sel = state.selected;
+      if (sel != null) {
+        state.selected = (_a = props.project.cards.find((card) => card.id == sel.id)) != null ? _a : null;
+      }
+      let statusField = (_b = props.project.fields.find((field) => field.handle === currentStatusHandle.value)) != null ? _b : props.project.fields.find((f) => f.type == "status");
+      currentStatusHandle.value = statusField.handle;
+      columns.value = (_c = statusField == null ? void 0 : statusField.options) == null ? void 0 : _c.map((option2) => {
+        return __spreadProps(__spreadValues({}, option2), {
+          cards: cardsForOption(option2)
+        });
+      });
+    }, { immediate: true });
     return (_ctx, _cache) => {
       var _a;
       const _component_Link = _resolveComponent("Link");
@@ -8249,6 +8250,12 @@ const _sfc_main = /* @__PURE__ */ _defineComponent({
                                   }, _hoisted_15, 8, _hoisted_13)
                                 ]),
                                 _createElementVNode("div", _hoisted_16, [
+                                  _ctx.route().current() != "projects.show" ? (_openBlock(), _createBlock(_unref(VBreadcrumbs), {
+                                    key: 0,
+                                    items: element.breadcrumbs
+                                  }, null, 8, ["items"])) : _createCommentVNode("", true)
+                                ]),
+                                _createElementVNode("div", _hoisted_17, [
                                   (_openBlock(true), _createElementBlock(_Fragment, null, _renderList(__props.project.fields.filter((f) => f.handle !== _unref(currentStatusHandle)), (field) => {
                                     return _openBlock(), _createBlock(_unref(VFieldWrapper), {
                                       key: field.id,

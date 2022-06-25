@@ -71,8 +71,9 @@
                         <Link
                           :href="route('cards.show', element)"
                           class="inline-flex items-center text-left md:text-sm font-medium hover:underline"
-                          >{{ element.title }}</Link
                         >
+                          {{ element.title }}
+                        </Link>
                         <button
                           @click="state.selected = element"
                           class="inline-flex items-center ml-2"
@@ -97,6 +98,9 @@
                             />
                           </svg>
                         </button>
+                      </div>
+                      <div class="truncate">
+                        <VBreadcrumbs v-if="route().current() != 'projects.show'" :items="element.breadcrumbs"></VBreadcrumbs>
                       </div>
                       <div class="flex flex-wrap gap-2 items-start mt-2">
                         <VFieldWrapper
@@ -135,7 +139,7 @@
 import draggable from "vuedraggable";
 import { watch, ref, reactive, onMounted, computed } from "vue";
 import KanbanCardForm from "./KanbanCardForm.vue";
-import { VCard, VFormList, VFieldWrapper, useCardForm, VDrawer, PageCardsShow } from "taskday";
+import { VCard, VFormList, VFieldWrapper, useCardForm, VDrawer, VBreadcrumbs, PageCardsShow } from "taskday";
 import { useStorage } from "@vueuse/core";
 
 const props = defineProps<{
@@ -150,28 +154,6 @@ const props = defineProps<{
 const state = reactive({ selected: null });
 const currentStatusHandle = useStorage<string>( props.project.id + "_kanbanview-status-handle", null);
 const columns = ref([]);
-
-onMounted(() => {
-  let sel = state.selected;
-
-  if (sel != null) {
-    state.selected =
-      props.project.cards.find((card: Card) => card.id == sel.id) ?? null;
-  }
-
-  let statusField = props.project.fields
-    .find((field) => field.handle === currentStatusHandle.value) ?? props.project.fields.find(f => f.type == 'status');
-
-  currentStatusHandle.value = statusField.handle;
-
-  columns.value = statusField
-    ?.options?.map((option) => {
-      return {
-        ...option,
-        cards: cardsForOption(option),
-      };
-    });
-});
 
 const updateColumn = (column: any, card: Card) => {
   const { form, update } = useCardForm();
@@ -209,4 +191,27 @@ watch(
     console.log("currentStatusHandle", currentStatusHandle.value);
   }
 );
+
+
+watch(() => props.project, () => {
+  let sel = state.selected;
+
+  if (sel != null) {
+    state.selected =
+      props.project.cards.find((card: Card) => card.id == sel.id) ?? null;
+  }
+
+  let statusField = props.project.fields
+    .find((field) => field.handle === currentStatusHandle.value) ?? props.project.fields.find(f => f.type == 'status');
+
+  currentStatusHandle.value = statusField.handle;
+
+  columns.value = statusField
+    ?.options?.map((option) => {
+      return {
+        ...option,
+        cards: cardsForOption(option),
+      };
+    });
+}, { immediate: true });
 </script>
