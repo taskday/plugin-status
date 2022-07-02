@@ -60,15 +60,16 @@ const _sfc_main$3 = defineComponent$1({
   }
 });
 const _toDisplayString$2 = window["Vue"].toDisplayString;
-const _normalizeClass$1 = window["Vue"].normalizeClass;
-const _createElementVNode$2 = window["Vue"].createElementVNode;
+const _createTextVNode$2 = window["Vue"].createTextVNode;
 const _resolveComponent$2 = window["Vue"].resolveComponent;
+const _normalizeClass$1 = window["Vue"].normalizeClass;
 const _withCtx$2 = window["Vue"].withCtx;
 const _createVNode$3 = window["Vue"].createVNode;
 const _renderList$2 = window["Vue"].renderList;
 const _Fragment$2 = window["Vue"].Fragment;
 const _openBlock$3 = window["Vue"].openBlock;
 const _createElementBlock$3 = window["Vue"].createElementBlock;
+const _createElementVNode$2 = window["Vue"].createElementVNode;
 const _createBlock$1 = window["Vue"].createBlock;
 function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_VDropdownButton = _resolveComponent$2("VDropdownButton");
@@ -78,21 +79,21 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock$3(), _createElementBlock$3("div", null, [
     _createVNode$3(_component_VDropdown, { class: "h-full" }, {
       default: _withCtx$2(() => [
-        _createVNode$3(_component_VDropdownButton, { class: "h-full" }, {
+        _createVNode$3(_component_VDropdownButton, {
+          class: _normalizeClass$1([{
+            "bg-gray-100 dark:bg-gray-400 text-gray-600 dark:text-gray-400 dark:bg-opacity-20": _ctx.color === "gray",
+            "bg-red-100 dark:bg-red-400 text-red-600 dark:text-red-400 dark:bg-opacity-20": _ctx.color === "red",
+            "bg-green-100 dark:bg-green-400 text-green-600 dark:text-green-400 dark:bg-opacity-20": _ctx.color === "green",
+            "bg-yellow-100 dark:bg-yellow-400 text-yellow-600 dark:text-yellow-400 dark:bg-opacity-20": _ctx.color === "yellow",
+            "bg-blue-100 dark:bg-blue-400 text-blue-600 dark:text-blue-400 dark:bg-opacity-20": _ctx.color === "blue",
+            "bg-purple-100 dark:bg-purple-400 text-purple-600 dark:text-purple-400 dark:bg-opacity-20": _ctx.color === "purple"
+          }, "rounded transition font-medium h-full text-sm whitespace-nowrap w-auto px-4 flex items-center justify-center"])
+        }, {
           default: _withCtx$2(() => [
-            _createElementVNode$2("div", {
-              class: _normalizeClass$1([{
-                "bg-gray-100 dark:bg-gray-400 text-gray-600 dark:text-gray-400 dark:bg-opacity-20": _ctx.color === "gray",
-                "bg-red-100 dark:bg-red-400 text-red-600 dark:text-red-400 dark:bg-opacity-20": _ctx.color === "red",
-                "bg-green-100 dark:bg-green-400 text-green-600 dark:text-green-400 dark:bg-opacity-20": _ctx.color === "green",
-                "bg-yellow-100 dark:bg-yellow-400 text-yellow-600 dark:text-yellow-400 dark:bg-opacity-20": _ctx.color === "yellow",
-                "bg-blue-100 dark:bg-blue-400 text-blue-600 dark:text-blue-400 dark:bg-opacity-20": _ctx.color === "blue",
-                "bg-purple-100 dark:bg-purple-400 text-purple-600 dark:text-purple-400 dark:bg-opacity-20": _ctx.color === "purple"
-              }, "rounded transition font-medium h-full text-sm whitespace-nowrap w-auto px-4 flex items-center justify-center"])
-            }, _toDisplayString$2(_ctx.name), 3)
+            _createTextVNode$2(_toDisplayString$2(_ctx.name), 1)
           ]),
           _: 1
-        }),
+        }, 8, ["class"]),
         _createVNode$3(_component_VDropdownItems, null, {
           default: _withCtx$2(() => [
             (_openBlock$3(true), _createElementBlock$3(_Fragment$2, null, _renderList$2(_ctx.options, (option2) => {
