@@ -1,8 +1,8 @@
 <template>
   <div>
     <VDropdown class="h-full">
-      <VDropdownButton class="h-full">
-        <div
+
+        <VDropdownButton
           :class="{
             'bg-gray-100 dark:bg-gray-400 text-gray-600 dark:text-gray-400 dark:bg-opacity-20': color === 'gray',
             'bg-red-100 dark:bg-red-400 text-red-600 dark:text-red-400 dark:bg-opacity-20': color === 'red',
@@ -12,8 +12,8 @@
             'bg-purple-100 dark:bg-purple-400 text-purple-600 dark:text-purple-400 dark:bg-opacity-20': color === 'purple',
           }"
           class="rounded transition font-medium h-full text-sm whitespace-nowrap w-auto px-4 flex items-center justify-center"
-        >{{ name }}</div>
-      </VDropdownButton>
+        >{{ name }}</VDropdownButton>
+
       <VDropdownItems>
         <VDropdownItem
           @click="update(option)"
