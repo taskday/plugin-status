@@ -55,7 +55,7 @@
               </div>
               <div class="mt-4">
                 <draggable
-                  class="space-y-4"
+
                   @change="
                     ({ added }) => added && updateColumn(column, added.element)
                   "
@@ -66,7 +66,7 @@
                   itemKey="id"
                 >
                   <template #item="{ element }">
-                    <VCard>
+                    <VCard class="mb-4">
                       <div class="flex items-start gap-x-1 mb-1 justify-between">
                         <Link
                           :href="route('cards.show', element)"
@@ -114,7 +114,7 @@
                   </template>
                 </draggable>
                 <KanbanCardForm
-                  class="mt-4"
+
                   :project="project"
                   :status="column"
                   :handle="currentStatusHandle"

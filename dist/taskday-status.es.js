@@ -8222,7 +8222,6 @@ const _sfc_main = /* @__PURE__ */ _defineComponent({
                       ]),
                       _createElementVNode("div", _hoisted_11, [
                         _createVNode(_unref(draggable), {
-                          class: "space-y-4",
                           onChange: ({ added }) => added && updateColumn(column, added.element),
                           modelValue: column.cards,
                           "onUpdate:modelValue": ($event) => column.cards = $event,
@@ -8232,7 +8231,7 @@ const _sfc_main = /* @__PURE__ */ _defineComponent({
                           itemKey: "id"
                         }, {
                           item: _withCtx(({ element }) => [
-                            _createVNode(_unref(VCard), null, {
+                            _createVNode(_unref(VCard), { class: "mb-4" }, {
                               default: _withCtx(() => [
                                 _createElementVNode("div", _hoisted_12, [
                                   _createVNode(_component_Link, {
@@ -8271,7 +8270,6 @@ const _sfc_main = /* @__PURE__ */ _defineComponent({
                           _: 2
                         }, 1032, ["onChange", "modelValue", "onUpdate:modelValue"]),
                         _createVNode(_sfc_main$1, {
-                          class: "mt-4",
                           project: __props.project,
                           status: column,
                           handle: _unref(currentStatusHandle)
