@@ -6582,7 +6582,7 @@ const _openBlock$1 = window["Vue"].openBlock;
 const _createElementBlock$1 = window["Vue"].createElementBlock;
 const _hoisted_1$1 = ["onSubmit"];
 const VFormInput = window["Components"].VFormInput;
-const useCardForm$1 = window["Components"].useCardForm;
+const useCardForm = window["Components"].useCardForm;
 const _sfc_main$1 = /* @__PURE__ */ _defineComponent$1({
   props: {
     status: null,
@@ -6591,7 +6591,7 @@ const _sfc_main$1 = /* @__PURE__ */ _defineComponent$1({
   },
   setup(__props) {
     const props = __props;
-    const { form, store } = useCardForm$1();
+    const { form, store } = useCardForm();
     function save2() {
       form.fields = {
         [props.handle]: props.status.color
@@ -8119,10 +8119,11 @@ const _hoisted_17 = { class: "flex flex-wrap gap-2 items-start mt-2" };
 const watch = window["Vue"].watch;
 const ref = window["Vue"].ref;
 const reactive = window["Vue"].reactive;
+const inject = window["Vue"].inject;
 const VCard = window["Components"].VCard;
 const VFormList = window["Components"].VFormList;
 const VFieldWrapper = window["Components"].VFieldWrapper;
-const useCardForm = window["Components"].useCardForm;
+const useCardFieldForm = window["Components"].useCardFieldForm;
 const VDrawer = window["Components"].VDrawer;
 const VBreadcrumbs = window["Components"].VBreadcrumbs;
 const PageCardsShow = window["Components"].PageCardsShow;
@@ -8134,15 +8135,14 @@ const _sfc_main = /* @__PURE__ */ _defineComponent({
   },
   setup(__props) {
     const props = __props;
+    inject("status");
     const state = reactive({ selected: null });
     const currentStatusHandle = useStorage(props.project.id + "_kanbanview-status-handle", null);
     const columns = ref([]);
     const updateColumn = (column, card) => {
-      const { form, update } = useCardForm();
-      form.fields = {
-        [currentStatusHandle.value]: column.color
-      };
-      update(card);
+      const { form, update } = useCardFieldForm();
+      form.value = column.color;
+      update(card, card.fields.find((f) => f.handle === currentStatusHandle.value));
     };
     const cardsForOption = (option2) => {
       return props.project.cards.filter((card) => {
