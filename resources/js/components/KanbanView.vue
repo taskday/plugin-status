@@ -137,10 +137,12 @@
 
 <script setup lang="ts">
 import draggable from "vuedraggable";
-import { watch, ref, reactive, onMounted, computed } from "vue";
+import { watch, ref, reactive, inject } from "vue";
 import KanbanCardForm from "./KanbanCardForm.vue";
-import { VCard, VFormList, VFieldWrapper, useCardForm, VDrawer, VBreadcrumbs, PageCardsShow } from "taskday";
+import { VCard, VFormList, VFieldWrapper, useCardFieldForm, VDrawer, VBreadcrumbs, PageCardsShow } from "taskday";
 import { useStorage } from "@vueuse/core";
+
+const status = inject<{ isUpdating: number[] }>('status');
 
 const props = defineProps<{
   title: String;
@@ -156,12 +158,9 @@ const currentStatusHandle = useStorage<string>( props.project.id + "_kanbanview-
 const columns = ref([]);
 
 const updateColumn = (column: any, card: Card) => {
-  const { form, update } = useCardForm();
-  form.fields = {
-    //@ts-ignore
-    [currentStatusHandle.value]: column.color,
-  };
-  update(card);
+  const { form, update } = useCardFieldForm();
+  form.value = column.color;
+  update(card, card.fields.find((f) => f.handle === currentStatusHandle.value));
 };
 
 const cardsForOption = (option: Option): Card[] => {
