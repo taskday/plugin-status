@@ -236,7 +236,9 @@ watch(
     if (sel != null) {
       state.selected =
         props.project.cards.find((card: Card) => card.id == sel.id) ?? null;
-    }
+    } 
+    
+    currentHandle.value = currentField.value.handle;
 
     columns.value = getColumns(currentField.value);
   },

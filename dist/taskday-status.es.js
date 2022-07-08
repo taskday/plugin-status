@@ -8198,6 +8198,7 @@ const _sfc_main = /* @__PURE__ */ _defineComponent({
       if (sel != null) {
         state.selected = (_a = props.project.cards.find((card) => card.id == sel.id)) != null ? _a : null;
       }
+      currentHandle.value = currentField.value.handle;
       columns.value = getColumns(currentField.value);
     }, { immediate: true });
     return (_ctx, _cache) => {
