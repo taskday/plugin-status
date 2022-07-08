@@ -5,7 +5,7 @@ namespace Performing\Taskday\Status;
 use Taskday\Bundles\AssetBundle;
 use Taskday\Base\Plugin;
 use Performing\Taskday\Status\Fields\StatusField;
-use Performing\Taskday\Status\Widgets\BacklogWidget;
+use Performing\Taskday\Status\Views\KanbanView;
 
 class StatusPlugin extends Plugin
 {
@@ -25,8 +25,10 @@ class StatusPlugin extends Plugin
         ];
     }
 
-    public function widgets(): array
+    public function views(): array
     {
-        return [];
+        return [
+            new KanbanView()
+        ];
     }
 }

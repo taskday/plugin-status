@@ -24,7 +24,7 @@ var _export_sfc = (sfc, props) => {
   }
   return target;
 };
-const computed = window["Vue"].computed;
+const computed$1 = window["Vue"].computed;
 const defineComponent$1 = window["Vue"].defineComponent;
 const useField = window["Components"].useField;
 const VDropdown = window["Components"].VDropdown;
@@ -50,18 +50,18 @@ const _sfc_main$3 = defineComponent$1({
   },
   setup(props) {
     const { state, options, onChange } = useField();
-    const current = computed(() => {
+    const current = computed$1(() => {
       var _a, _b;
       if (props.readonly) {
         return (_a = options.find((option2) => option2.color === props.value)) != null ? _a : options[0];
       }
       return (_b = options.find((option2) => option2.color === state.value)) != null ? _b : options[0];
     });
-    const name = computed(() => {
+    const name = computed$1(() => {
       var _a;
       return (_a = current.value) == null ? void 0 : _a.name;
     });
-    const color = computed(() => {
+    const color = computed$1(() => {
       var _a;
       return (_a = current.value) == null ? void 0 : _a.color;
     });
@@ -8144,7 +8144,7 @@ const _hoisted_17 = { class: "flex flex-wrap gap-2 items-start mt-2" };
 const watch = window["Vue"].watch;
 const ref = window["Vue"].ref;
 const reactive = window["Vue"].reactive;
-const inject = window["Vue"].inject;
+const computed = window["Vue"].computed;
 const VCard = window["Components"].VCard;
 const VFormList = window["Components"].VFormList;
 const VFieldWrapper = window["Components"].VFieldWrapper;
@@ -8160,63 +8160,61 @@ const _sfc_main = /* @__PURE__ */ _defineComponent({
   },
   setup(__props) {
     const props = __props;
-    inject("status");
     const state = reactive({ selected: null });
-    const currentStatusHandle = useStorage(props.project.id + "_kanbanview-status-handle", null);
-    const columns = ref([]);
+    let kanbanView = window.taskday.views.find((t) => t.type == "kanban");
+    const avilableFields = computed(() => {
+      return props.project.fields.filter((field) => {
+        return field.type == "status" || Object.keys(kanbanView.types).includes(field.type);
+      });
+    });
+    const currentHandle = useStorage(props.project.id + "_kanbanview-status-handle", null);
+    const currentField = computed(() => {
+      var _a;
+      return (_a = props.project.fields.find((field) => field.handle === currentHandle.value)) != null ? _a : props.project.fields.find((field) => field.type == "status" || Object.keys(kanbanView.types).includes(field.type));
+    });
     const updateColumn = (column, card) => {
       const { form, update } = useCardFieldForm();
       form.value = column.color;
-      update(card, card.fields.find((f) => f.handle === currentStatusHandle.value));
+      update(card, card.fields.find((f) => f.handle === currentHandle.value));
     };
     const cardsForOption = (option2) => {
       return props.project.cards.filter((card) => {
         var _a;
-        return (_a = card.fields) == null ? void 0 : _a.some((f) => f.handle === currentStatusHandle.value && f.pivot.value == option2.color);
+        return (_a = card.fields) == null ? void 0 : _a.some((f) => f.type == "status" ? f.handle === currentHandle.value && f.pivot.value == option2.color : f.handle === currentHandle.value && f.pivot.value == option2.value);
       });
     };
-    const updateCurrentField = (field) => {
-      var _a, _b;
-      currentStatusHandle.value = field.handle;
-      columns.value = (_b = (_a = props.project.fields.find((field2) => field2.handle === currentStatusHandle.value)) == null ? void 0 : _a.options) == null ? void 0 : _b.map((option2) => {
-        return __spreadProps(__spreadValues({}, option2), {
-          cards: cardsForOption(option2)
-        });
-      });
-    };
-    watch(() => currentStatusHandle.value, () => {
-      console.log("currentStatusHandle", currentStatusHandle.value);
-    });
+    const columns = ref([]);
+    function getColumns(field) {
+      let options = field.type == "status" ? field == null ? void 0 : field.options : kanbanView.types[field.type];
+      return options.map((option2) => __spreadProps(__spreadValues({}, option2), { cards: cardsForOption(option2) }));
+    }
+    function updateCurrentField(field) {
+      currentHandle.value = field.handle;
+      columns.value = getColumns(field);
+    }
     watch(() => props.project, () => {
-      var _a, _b, _c;
+      var _a;
       let sel = state.selected;
       if (sel != null) {
         state.selected = (_a = props.project.cards.find((card) => card.id == sel.id)) != null ? _a : null;
       }
-      let statusField = (_b = props.project.fields.find((field) => field.handle === currentStatusHandle.value)) != null ? _b : props.project.fields.find((f) => f.type == "status");
-      currentStatusHandle.value = statusField.handle;
-      columns.value = (_c = statusField == null ? void 0 : statusField.options) == null ? void 0 : _c.map((option2) => {
-        return __spreadProps(__spreadValues({}, option2), {
-          cards: cardsForOption(option2)
-        });
-      });
+      columns.value = getColumns(currentField.value);
     }, { immediate: true });
     return (_ctx, _cache) => {
-      var _a;
       const _component_Link = _resolveComponent("Link");
       return _openBlock(), _createElementBlock(_Fragment, null, [
         _createElementVNode("div", _hoisted_1, [
           _createElementVNode("div", _hoisted_2, [
             _createVNode(_unref(VFormList), {
-              selected: (_a = __props.project.fields.find((field) => field.handle === _unref(currentStatusHandle))) != null ? _a : __props.project.fields.find((field) => field.type === "status"),
-              options: __props.project.fields.filter((field) => field.type === "status"),
+              selected: _unref(currentField),
+              options: _unref(avilableFields),
               onChange: updateCurrentField
             }, {
               trigger: _withCtx(({ item }) => {
-                var _a2;
+                var _a;
                 return [
                   _hoisted_3,
-                  _createElementVNode("span", null, _toDisplayString((_a2 = item == null ? void 0 : item.title) != null ? _a2 : item == null ? void 0 : item.name), 1)
+                  _createElementVNode("span", null, _toDisplayString((_a = item == null ? void 0 : item.title) != null ? _a : item == null ? void 0 : item.name), 1)
                 ];
               }),
               _: 1
@@ -8281,7 +8279,7 @@ const _sfc_main = /* @__PURE__ */ _defineComponent({
                                   }, null, 8, ["items"])) : _createCommentVNode("", true)
                                 ]),
                                 _createElementVNode("div", _hoisted_17, [
-                                  (_openBlock(true), _createElementBlock(_Fragment, null, _renderList(__props.project.fields.filter((f) => f.handle !== _unref(currentStatusHandle)), (field) => {
+                                  (_openBlock(true), _createElementBlock(_Fragment, null, _renderList(__props.project.fields.filter((f) => f.handle !== _unref(currentHandle)), (field) => {
                                     return _openBlock(), _createBlock(_unref(VFieldWrapper), {
                                       key: field.id,
                                       card: element,
@@ -8298,7 +8296,7 @@ const _sfc_main = /* @__PURE__ */ _defineComponent({
                         _createVNode(_sfc_main$1, {
                           project: __props.project,
                           status: column,
-                          handle: _unref(currentStatusHandle)
+                          handle: _unref(currentHandle)
                         }, null, 8, ["project", "status", "handle"])
                       ])
                     ]);
@@ -8329,7 +8327,7 @@ document.addEventListener("taskday:init", () => {
     field: StatusField,
     options: StatusOptions,
     views: [
-      { id: "performing-kanban", title: "Board", component: _sfc_main, needs: ["status"] }
+      { type: "kanban", title: "Board", component: _sfc_main, needs: ["status"] }
     ]
   });
 });

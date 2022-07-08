@@ -16,9 +16,6 @@ class StatusServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // Register plugin
-        Taskday::register(new StatusPlugin, 'status');
-
         // Registering extra web routes
         Route::middleware('web')->group(__DIR__ . '/../routes/web.php');
 
@@ -39,6 +36,7 @@ class StatusServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        // Register plugin
+        Taskday::register(new StatusPlugin, 'status');
     }
 }

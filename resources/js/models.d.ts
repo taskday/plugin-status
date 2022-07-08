@@ -44,7 +44,7 @@ interface Field {
   title: string;
   handle: string;
   type: string;
-  options: Object
+  options: Array
   pivot: {
     value: string;
   }

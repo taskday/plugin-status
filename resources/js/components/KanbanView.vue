@@ -2,8 +2,8 @@
   <div class="mb-8 flex items-center">
     <div class="px-6">
       <VFormList
-        :selected="project.fields.find(field => field.handle === currentStatusHandle) ?? project.fields.find(field => field.type === 'status')"
-        :options="project.fields.filter(field => field.type === 'status')"
+        :selected="currentField"
+        :options="avilableFields"
         @change="updateCurrentField"
       >
         <template #trigger="{ item }">
@@ -40,22 +40,32 @@
               v-for="column in columns"
             >
               <div>
-                <span class="rounded-sm h-6 gap-3 pl-1 inline-flex items-center text-xs font-medium uppercase tracking-wide">
-                  <span :class="{
-                      'block h-3 w-3 rounded-full border border-gray-600 bg-white dark:border-gray-400 dark:bg-gray-400 dark:bg-opacity-20': column.color === 'gray',
-                      'block h-3 w-3 rounded-full border border-red-600 bg-red-100 dark:border-red-400 dark:bg-red-400 dark:bg-opacity-20': column.color === 'red',
-                      'block h-3 w-3 rounded-full border border-green-600 bg-green-100 dark:border-green-400 dark:bg-green-400 dark:bg-opacity-20': column.color === 'green',
-                      'block h-3 w-3 rounded-full border border-yellow-600 bg-yellow-100 dark:border-yellow-400 dark:bg-yellow-400 dark:bg-opacity-20': column.color === 'yellow',
-                      'block h-3 w-3 rounded-full border border-blue-600 bg-blue-100 dark:border-blue-400 dark:bg-blue-400 dark:bg-opacity-20': column.color === 'blue',
-                      'block h-3 w-3 rounded-full border border-teal-600 bg-teal-100 dark:border-teal-400 dark:bg-teal-400 dark:bg-opacity-20': column.color === 'teal',
-                      'block h-3 w-3 rounded-full border border-purple-600 bg-purple-100 dark:border-purple-400 dark:bg-purple-400 dark:bg-opacity-20': column.color === 'purple',
-                    }"></span>
+                <span
+                  class="rounded-sm h-6 gap-3 pl-1 inline-flex items-center text-xs font-medium uppercase tracking-wide"
+                >
+                  <span
+                    :class="{
+                      'block h-3 w-3 rounded-full border border-gray-600 bg-white dark:border-gray-400 dark:bg-gray-400 dark:bg-opacity-20':
+                        column.color === 'gray',
+                      'block h-3 w-3 rounded-full border border-red-600 bg-red-100 dark:border-red-400 dark:bg-red-400 dark:bg-opacity-20':
+                        column.color === 'red',
+                      'block h-3 w-3 rounded-full border border-green-600 bg-green-100 dark:border-green-400 dark:bg-green-400 dark:bg-opacity-20':
+                        column.color === 'green',
+                      'block h-3 w-3 rounded-full border border-yellow-600 bg-yellow-100 dark:border-yellow-400 dark:bg-yellow-400 dark:bg-opacity-20':
+                        column.color === 'yellow',
+                      'block h-3 w-3 rounded-full border border-blue-600 bg-blue-100 dark:border-blue-400 dark:bg-blue-400 dark:bg-opacity-20':
+                        column.color === 'blue',
+                      'block h-3 w-3 rounded-full border border-teal-600 bg-teal-100 dark:border-teal-400 dark:bg-teal-400 dark:bg-opacity-20':
+                        column.color === 'teal',
+                      'block h-3 w-3 rounded-full border border-purple-600 bg-purple-100 dark:border-purple-400 dark:bg-purple-400 dark:bg-opacity-20':
+                        column.color === 'purple',
+                    }"
+                  ></span>
                   {{ column.name }}
                 </span>
               </div>
               <div class="mt-4">
                 <draggable
-
                   @change="
                     ({ added }) => added && updateColumn(column, added.element)
                   "
@@ -67,7 +77,9 @@
                 >
                   <template #item="{ element }">
                     <VCard class="mb-4">
-                      <div class="flex items-start gap-x-1 mb-1 justify-between">
+                      <div
+                        class="flex items-start gap-x-1 mb-1 justify-between"
+                      >
                         <Link
                           :href="route('cards.show', element)"
                           class="inline-flex items-center text-left md:text-sm font-medium hover:underline"
@@ -100,11 +112,16 @@
                         </button>
                       </div>
                       <div class="truncate">
-                        <VBreadcrumbs v-if="route().current() != 'projects.show'" :items="element.breadcrumbs"></VBreadcrumbs>
+                        <VBreadcrumbs
+                          v-if="route().current() != 'projects.show'"
+                          :items="element.breadcrumbs"
+                        ></VBreadcrumbs>
                       </div>
                       <div class="flex flex-wrap gap-2 items-start mt-2">
                         <VFieldWrapper
-                          v-for="field in project.fields.filter(f => f.handle !== currentStatusHandle)"
+                          v-for="field in project.fields.filter(
+                            (f) => f.handle !== currentHandle
+                          )"
                           :key="field.id"
                           :card="element"
                           :field="field"
@@ -114,10 +131,9 @@
                   </template>
                 </draggable>
                 <KanbanCardForm
-
                   :project="project"
                   :status="column"
-                  :handle="currentStatusHandle"
+                  :handle="currentHandle"
                 />
               </div>
             </div>
@@ -137,12 +153,18 @@
 
 <script setup lang="ts">
 import draggable from "vuedraggable";
-import { watch, ref, reactive, inject } from "vue";
+import { watch, ref, reactive, computed } from "vue";
 import KanbanCardForm from "./KanbanCardForm.vue";
-import { VCard, VFormList, VFieldWrapper, useCardFieldForm, VDrawer, VBreadcrumbs, PageCardsShow } from "taskday";
+import {
+  VCard,
+  VFormList,
+  VFieldWrapper,
+  useCardFieldForm,
+  VDrawer,
+  VBreadcrumbs,
+  PageCardsShow,
+} from "taskday";
 import { useStorage } from "@vueuse/core";
-
-const status = inject<{ isUpdating: number[] }>('status');
 
 const props = defineProps<{
   title: String;
@@ -154,63 +176,70 @@ const props = defineProps<{
 }>();
 
 const state = reactive({ selected: null });
-const currentStatusHandle = useStorage<string>( props.project.id + "_kanbanview-status-handle", null);
-const columns = ref([]);
+
+let kanbanView = window.taskday.views.find((t) => t.type == "kanban");
+
+const avilableFields = computed(() => {
+  return props.project.fields.filter((field: Field) => {
+    return (
+      field.type == "status" || Object.keys(kanbanView.types).includes(field.type)
+    );
+  });
+});
+
+const currentHandle = useStorage<string>(props.project.id + "_kanbanview-status-handle", null);
+
+const currentField = computed(() => {
+  return props.project.fields.find((field) => field.handle === currentHandle.value) ??
+    props.project.fields.find((field) => field.type == "status" || Object.keys(kanbanView.types).includes(field.type))
+});
 
 const updateColumn = (column: any, card: Card) => {
   const { form, update } = useCardFieldForm();
   form.value = column.color;
-  update(card, card.fields.find((f) => f.handle === currentStatusHandle.value));
+  update(
+    card,
+    card.fields.find((f) => f.handle === currentHandle.value)
+  );
 };
 
 const cardsForOption = (option: Option): Card[] => {
   return props.project.cards.filter((card) => {
     return card.fields?.some(
-      (f) =>
-        f.handle === currentStatusHandle.value && f.pivot.value == option.color
+      (f) => f.type == 'status' 
+        ? (f.handle === currentHandle.value && f.pivot.value == option.color) 
+        : (f.handle === currentHandle.value && f.pivot.value == option.value) 
     );
   });
 };
 
-const updateCurrentField = (field: Field) => {
-  currentStatusHandle.value = field.handle;
-  columns.value = props.project.fields
-    .find((field) => field.handle === currentStatusHandle.value)
-    ?.options?.map((option) => {
-      return {
-        ...option,
-        cards: cardsForOption(option),
-      };
-    });
+const columns = ref([])
+
+function getColumns(field: Field) {
+  let options = field.type == 'status' 
+    ? field?.options 
+    : kanbanView.types[field.type];
+
+  return options.map((option: Option) => ({ ...option, cards: cardsForOption(option) }));
+}
+
+function updateCurrentField(field: Field) {
+  currentHandle.value = field.handle;
+  columns.value = getColumns(field);
 };
 
 watch(
-  () => currentStatusHandle.value,
+  () => props.project,
   () => {
-    console.log("currentStatusHandle", currentStatusHandle.value);
-  }
+    let sel = state.selected;
+
+    if (sel != null) {
+      state.selected =
+        props.project.cards.find((card: Card) => card.id == sel.id) ?? null;
+    }
+
+    columns.value = getColumns(currentField.value);
+  },
+  { immediate: true }
 );
-
-
-watch(() => props.project, () => {
-  let sel = state.selected;
-
-  if (sel != null) {
-    state.selected =
-      props.project.cards.find((card: Card) => card.id == sel.id) ?? null;
-  }
-
-  let statusField = props.project.fields
-    .find((field) => field.handle === currentStatusHandle.value) ?? props.project.fields.find(f => f.type == 'status');
-
-  currentStatusHandle.value = statusField.handle;
-
-  columns.value = statusField
-    ?.options?.map((option) => {
-      return {
-        ...option,
-        cards: cardsForOption(option),
-      };
-    });
-}, { immediate: true });
 </script>
