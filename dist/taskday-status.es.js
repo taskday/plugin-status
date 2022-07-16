@@ -24,14 +24,14 @@ var _export_sfc = (sfc, props) => {
   }
   return target;
 };
-const computed$1 = window["Vue"].computed;
+const computed$2 = window["Vue"].computed;
 const defineComponent$1 = window["Vue"].defineComponent;
 const useField = window["Components"].useField;
-const VDropdown = window["Components"].VDropdown;
-const VDropdownButton = window["Components"].VDropdownButton;
-const VDropdownItems = window["Components"].VDropdownItems;
-const VDropdownItem = window["Components"].VDropdownItem;
-const _sfc_main$3 = defineComponent$1({
+const VDropdown$1 = window["Components"].VDropdown;
+const VDropdownButton$1 = window["Components"].VDropdownButton;
+const VDropdownItems$1 = window["Components"].VDropdownItems;
+const VDropdownItem$1 = window["Components"].VDropdownItem;
+const _sfc_main$4 = defineComponent$1({
   props: {
     readonly: {
       type: Boolean,
@@ -43,25 +43,25 @@ const _sfc_main$3 = defineComponent$1({
     }
   },
   components: {
-    VDropdown,
-    VDropdownButton,
-    VDropdownItems,
-    VDropdownItem
+    VDropdown: VDropdown$1,
+    VDropdownButton: VDropdownButton$1,
+    VDropdownItems: VDropdownItems$1,
+    VDropdownItem: VDropdownItem$1
   },
   setup(props) {
     const { state, options, onChange } = useField();
-    const current = computed$1(() => {
+    const current = computed$2(() => {
       var _a, _b;
       if (props.readonly) {
         return (_a = options.find((option2) => option2.color === props.value)) != null ? _a : options[0];
       }
       return (_b = options.find((option2) => option2.color === state.value)) != null ? _b : options[0];
     });
-    const name = computed$1(() => {
+    const name = computed$2(() => {
       var _a;
       return (_a = current.value) == null ? void 0 : _a.name;
     });
-    const color = computed$1(() => {
+    const color = computed$2(() => {
       var _a;
       return (_a = current.value) == null ? void 0 : _a.color;
     });
@@ -72,28 +72,28 @@ const _sfc_main$3 = defineComponent$1({
     return { current, color, name, options, update };
   }
 });
-const _toDisplayString$2 = window["Vue"].toDisplayString;
-const _normalizeClass$1 = window["Vue"].normalizeClass;
-const _createElementVNode$2 = window["Vue"].createElementVNode;
-const _openBlock$3 = window["Vue"].openBlock;
-const _createElementBlock$3 = window["Vue"].createElementBlock;
-const _createTextVNode$2 = window["Vue"].createTextVNode;
+const _toDisplayString$3 = window["Vue"].toDisplayString;
+const _normalizeClass$2 = window["Vue"].normalizeClass;
+const _createElementVNode$3 = window["Vue"].createElementVNode;
+const _openBlock$4 = window["Vue"].openBlock;
+const _createElementBlock$4 = window["Vue"].createElementBlock;
+const _createTextVNode$3 = window["Vue"].createTextVNode;
 const _resolveComponent$2 = window["Vue"].resolveComponent;
-const _withCtx$2 = window["Vue"].withCtx;
-const _createVNode$3 = window["Vue"].createVNode;
-const _renderList$2 = window["Vue"].renderList;
-const _Fragment$2 = window["Vue"].Fragment;
-const _createBlock$1 = window["Vue"].createBlock;
+const _withCtx$3 = window["Vue"].withCtx;
+const _createVNode$4 = window["Vue"].createVNode;
+const _renderList$3 = window["Vue"].renderList;
+const _Fragment$3 = window["Vue"].Fragment;
+const _createBlock$2 = window["Vue"].createBlock;
 const _hoisted_1$3 = { key: 0 };
 function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_VDropdownButton = _resolveComponent$2("VDropdownButton");
   const _component_VDropdownItem = _resolveComponent$2("VDropdownItem");
   const _component_VDropdownItems = _resolveComponent$2("VDropdownItems");
   const _component_VDropdown = _resolveComponent$2("VDropdown");
-  return _openBlock$3(), _createElementBlock$3("span", null, [
-    _ctx.readonly ? (_openBlock$3(), _createElementBlock$3("span", _hoisted_1$3, [
-      _createElementVNode$2("span", {
-        class: _normalizeClass$1({
+  return _openBlock$4(), _createElementBlock$4("span", null, [
+    _ctx.readonly ? (_openBlock$4(), _createElementBlock$4("span", _hoisted_1$3, [
+      _createElementVNode$3("span", {
+        class: _normalizeClass$2({
           "bg-gray-100 dark:bg-gray-400 text-gray-600 dark:text-gray-400 dark:bg-opacity-20": _ctx.color === "gray",
           "bg-red-100 dark:bg-red-400 text-red-600 dark:text-red-400 dark:bg-opacity-20": _ctx.color === "red",
           "bg-green-100 dark:bg-green-400 text-green-600 dark:text-green-400 dark:bg-opacity-20": _ctx.color === "green",
@@ -101,11 +101,11 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
           "bg-blue-100 dark:bg-blue-400 text-blue-600 dark:text-blue-400 dark:bg-opacity-20": _ctx.color === "blue",
           "bg-purple-100 dark:bg-purple-400 text-purple-600 dark:text-purple-400 dark:bg-opacity-20": _ctx.color === "purple"
         })
-      }, _toDisplayString$2(_ctx.name), 3)
-    ])) : (_openBlock$3(), _createBlock$1(_component_VDropdown, { key: 1 }, {
-      default: _withCtx$2(() => [
-        _createVNode$3(_component_VDropdownButton, {
-          class: _normalizeClass$1([{
+      }, _toDisplayString$3(_ctx.name), 3)
+    ])) : (_openBlock$4(), _createBlock$2(_component_VDropdown, { key: 1 }, {
+      default: _withCtx$3(() => [
+        _createVNode$4(_component_VDropdownButton, {
+          class: _normalizeClass$2([{
             "bg-gray-100 dark:bg-gray-400 text-gray-600 dark:text-gray-400 dark:bg-opacity-20": _ctx.color === "gray",
             "bg-red-100 dark:bg-red-400 text-red-600 dark:text-red-400 dark:bg-opacity-20": _ctx.color === "red",
             "bg-green-100 dark:bg-green-400 text-green-600 dark:text-green-400 dark:bg-opacity-20": _ctx.color === "green",
@@ -114,20 +114,20 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
             "bg-purple-100 dark:bg-purple-400 text-purple-600 dark:text-purple-400 dark:bg-opacity-20": _ctx.color === "purple"
           }, "rounded transition font-medium h-full text-sm whitespace-nowrap w-auto px-4 flex items-center justify-center"])
         }, {
-          default: _withCtx$2(() => [
-            _createTextVNode$2(_toDisplayString$2(_ctx.name), 1)
+          default: _withCtx$3(() => [
+            _createTextVNode$3(_toDisplayString$3(_ctx.name), 1)
           ]),
           _: 1
         }, 8, ["class"]),
-        _createVNode$3(_component_VDropdownItems, null, {
-          default: _withCtx$2(() => [
-            (_openBlock$3(true), _createElementBlock$3(_Fragment$2, null, _renderList$2(_ctx.options, (option2) => {
-              return _openBlock$3(), _createBlock$1(_component_VDropdownItem, {
+        _createVNode$4(_component_VDropdownItems, null, {
+          default: _withCtx$3(() => [
+            (_openBlock$4(true), _createElementBlock$4(_Fragment$3, null, _renderList$3(_ctx.options, (option2) => {
+              return _openBlock$4(), _createBlock$2(_component_VDropdownItem, {
                 onClick: ($event) => _ctx.update(option2),
                 key: option2.id
               }, {
-                default: _withCtx$2(() => [
-                  _createElementVNode$2("span", null, _toDisplayString$2(option2.name), 1)
+                default: _withCtx$3(() => [
+                  _createElementVNode$3("span", null, _toDisplayString$3(option2.name), 1)
                 ]),
                 _: 2
               }, 1032, ["onClick"]);
@@ -140,14 +140,14 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
     }))
   ]);
 }
-var StatusField = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["render", _sfc_render$1]]);
+var StatusField = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["render", _sfc_render$1]]);
 const VButton = window["Components"].VButton;
 const VFormInput$1 = window["Components"].VFormInput;
 const VFormSelect = window["Components"].VFormSelect;
 const defineComponent = window["Vue"].defineComponent;
 const onMounted = window["Vue"].onMounted;
 const reactive$2 = window["Vue"].reactive;
-const _sfc_main$2 = defineComponent({
+const _sfc_main$3 = defineComponent({
   components: {
     VButton,
     VFormInput: VFormInput$1,
@@ -180,54 +180,54 @@ const _sfc_main$2 = defineComponent({
     return { newStatus, remove: remove2, add: add2 };
   }
 });
-const _renderList$1 = window["Vue"].renderList;
-const _Fragment$1 = window["Vue"].Fragment;
-const _openBlock$2 = window["Vue"].openBlock;
-const _createElementBlock$2 = window["Vue"].createElementBlock;
-const _toDisplayString$1 = window["Vue"].toDisplayString;
-const _createElementVNode$1 = window["Vue"].createElementVNode;
-const _createTextVNode$1 = window["Vue"].createTextVNode;
+const _renderList$2 = window["Vue"].renderList;
+const _Fragment$2 = window["Vue"].Fragment;
+const _openBlock$3 = window["Vue"].openBlock;
+const _createElementBlock$3 = window["Vue"].createElementBlock;
+const _toDisplayString$2 = window["Vue"].toDisplayString;
+const _createElementVNode$2 = window["Vue"].createElementVNode;
+const _createTextVNode$2 = window["Vue"].createTextVNode;
 const _resolveComponent$1 = window["Vue"].resolveComponent;
 const _withModifiers$1 = window["Vue"].withModifiers;
-const _withCtx$1 = window["Vue"].withCtx;
-const _createVNode$2 = window["Vue"].createVNode;
+const _withCtx$2 = window["Vue"].withCtx;
+const _createVNode$3 = window["Vue"].createVNode;
 const _hoisted_1$2 = { class: "flex items-center justify-between space-x-2 p-2 border" };
 const _hoisted_2$1 = { class: "text-sm font-semibold" };
 const _hoisted_3$1 = { class: "text-sm" };
-const _hoisted_4$1 = /* @__PURE__ */ _createTextVNode$1("\xD7");
+const _hoisted_4$1 = /* @__PURE__ */ _createTextVNode$2("\xD7");
 const _hoisted_5$1 = { class: "mt-4 space-y-4" };
 const _hoisted_6$1 = { class: "flex items-center space-x-4" };
-const _hoisted_7$1 = /* @__PURE__ */ _createElementVNode$1("option", { value: "blue" }, "blue", -1);
-const _hoisted_8$1 = /* @__PURE__ */ _createElementVNode$1("option", { value: "yellow" }, "yellow", -1);
-const _hoisted_9$1 = /* @__PURE__ */ _createElementVNode$1("option", { value: "purple" }, "purple", -1);
-const _hoisted_10$1 = /* @__PURE__ */ _createElementVNode$1("option", { value: "red" }, "red", -1);
-const _hoisted_11$1 = /* @__PURE__ */ _createElementVNode$1("option", { value: "green" }, "green", -1);
-const _hoisted_12$1 = /* @__PURE__ */ _createElementVNode$1("option", { value: "teal" }, "teal", -1);
-const _hoisted_13$1 = /* @__PURE__ */ _createElementVNode$1("option", { value: "gray" }, "gray", -1);
-const _hoisted_14$1 = /* @__PURE__ */ _createTextVNode$1("Add");
+const _hoisted_7$1 = /* @__PURE__ */ _createElementVNode$2("option", { value: "blue" }, "blue", -1);
+const _hoisted_8$1 = /* @__PURE__ */ _createElementVNode$2("option", { value: "yellow" }, "yellow", -1);
+const _hoisted_9$1 = /* @__PURE__ */ _createElementVNode$2("option", { value: "purple" }, "purple", -1);
+const _hoisted_10$1 = /* @__PURE__ */ _createElementVNode$2("option", { value: "red" }, "red", -1);
+const _hoisted_11$1 = /* @__PURE__ */ _createElementVNode$2("option", { value: "green" }, "green", -1);
+const _hoisted_12$1 = /* @__PURE__ */ _createElementVNode$2("option", { value: "teal" }, "teal", -1);
+const _hoisted_13$1 = /* @__PURE__ */ _createElementVNode$2("option", { value: "gray" }, "gray", -1);
+const _hoisted_14$1 = /* @__PURE__ */ _createTextVNode$2("Add");
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   var _a;
   const _component_VButton = _resolveComponent$1("VButton");
   const _component_VFormInput = _resolveComponent$1("VFormInput");
   const _component_VFormSelect = _resolveComponent$1("VFormSelect");
-  return _openBlock$2(), _createElementBlock$2("div", null, [
-    (_openBlock$2(true), _createElementBlock$2(_Fragment$1, null, _renderList$1((_a = _ctx.form.options) != null ? _a : [], (status) => {
-      return _openBlock$2(), _createElementBlock$2("div", {
+  return _openBlock$3(), _createElementBlock$3("div", null, [
+    (_openBlock$3(true), _createElementBlock$3(_Fragment$2, null, _renderList$2((_a = _ctx.form.options) != null ? _a : [], (status) => {
+      return _openBlock$3(), _createElementBlock$3("div", {
         class: "space-y-3",
         key: status.id
       }, [
-        _createElementVNode$1("div", _hoisted_1$2, [
-          _createElementVNode$1("div", null, [
-            _createElementVNode$1("div", _hoisted_2$1, _toDisplayString$1(status.name), 1),
-            _createElementVNode$1("div", _hoisted_3$1, _toDisplayString$1(status.color), 1)
+        _createElementVNode$2("div", _hoisted_1$2, [
+          _createElementVNode$2("div", null, [
+            _createElementVNode$2("div", _hoisted_2$1, _toDisplayString$2(status.name), 1),
+            _createElementVNode$2("div", _hoisted_3$1, _toDisplayString$2(status.color), 1)
           ]),
-          _createVNode$2(_component_VButton, {
+          _createVNode$3(_component_VButton, {
             variant: "base",
             class: "w-5 h-5 rounded bg-gray-200 dark:bg-gray-700",
             type: "submit",
             onClick: _withModifiers$1(($event) => _ctx.remove(status), ["prevent"])
           }, {
-            default: _withCtx$1(() => [
+            default: _withCtx$2(() => [
               _hoisted_4$1
             ]),
             _: 2
@@ -235,19 +235,19 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         ])
       ]);
     }), 128)),
-    _createElementVNode$1("div", _hoisted_5$1, [
-      _createElementVNode$1("div", _hoisted_6$1, [
-        _createVNode$2(_component_VFormInput, {
+    _createElementVNode$2("div", _hoisted_5$1, [
+      _createElementVNode$2("div", _hoisted_6$1, [
+        _createVNode$3(_component_VFormInput, {
           label: "Name",
           modelValue: _ctx.newStatus.name,
           "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.newStatus.name = $event)
         }, null, 8, ["modelValue"]),
-        _createVNode$2(_component_VFormSelect, {
+        _createVNode$3(_component_VFormSelect, {
           label: "Color",
           modelValue: _ctx.newStatus.color,
           "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => _ctx.newStatus.color = $event)
         }, {
-          default: _withCtx$1(() => [
+          default: _withCtx$2(() => [
             _hoisted_7$1,
             _hoisted_8$1,
             _hoisted_9$1,
@@ -259,11 +259,11 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
           _: 1
         }, 8, ["modelValue"])
       ]),
-      _createVNode$2(_component_VButton, {
+      _createVNode$3(_component_VButton, {
         type: "button",
         onClick: _withModifiers$1(_ctx.add, ["prevent"])
       }, {
-        default: _withCtx$1(() => [
+        default: _withCtx$2(() => [
           _hoisted_14$1
         ]),
         _: 1
@@ -271,7 +271,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     ])
   ]);
 }
-var StatusOptions = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["render", _sfc_render]]);
+var StatusOptions = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["render", _sfc_render]]);
 var commonjsGlobal = typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ? window : typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : {};
 function getDefaultExportFromCjs(x) {
   return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, "default") ? x["default"] : x;
@@ -6599,16 +6599,16 @@ var require$$0 = /* @__PURE__ */ getAugmentedNamespace(sortable_esm);
   });
 })(vuedraggable_umd);
 var draggable = /* @__PURE__ */ getDefaultExportFromCjs(vuedraggable_umd.exports);
-const _defineComponent$1 = window["Vue"].defineComponent;
-const _unref$1 = window["Vue"].unref;
-const _createVNode$1 = window["Vue"].createVNode;
+const _defineComponent$2 = window["Vue"].defineComponent;
+const _unref$2 = window["Vue"].unref;
+const _createVNode$2 = window["Vue"].createVNode;
 const _withModifiers = window["Vue"].withModifiers;
-const _openBlock$1 = window["Vue"].openBlock;
-const _createElementBlock$1 = window["Vue"].createElementBlock;
+const _openBlock$2 = window["Vue"].openBlock;
+const _createElementBlock$2 = window["Vue"].createElementBlock;
 const _hoisted_1$1 = ["onSubmit"];
 const VFormInput = window["Components"].VFormInput;
 const useCardForm = window["Components"].useCardForm;
-const _sfc_main$1 = /* @__PURE__ */ _defineComponent$1({
+const _sfc_main$2 = /* @__PURE__ */ _defineComponent$2({
   props: {
     status: null,
     project: null,
@@ -6624,14 +6624,14 @@ const _sfc_main$1 = /* @__PURE__ */ _defineComponent$1({
       store(props.project);
     }
     return (_ctx, _cache) => {
-      return _openBlock$1(), _createElementBlock$1("form", {
+      return _openBlock$2(), _createElementBlock$2("form", {
         onSubmit: _withModifiers(save2, ["prevent"])
       }, [
-        _createVNode$1(_unref$1(VFormInput), {
+        _createVNode$2(_unref$2(VFormInput), {
           label: "",
           placeholder: "New card...",
-          modelValue: _unref$1(form).title,
-          "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _unref$1(form).title = $event)
+          modelValue: _unref$2(form).title,
+          "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _unref$2(form).title = $event)
         }, null, 8, ["modelValue"])
       ], 40, _hoisted_1$1);
     };
@@ -8076,24 +8076,24 @@ var SwipeDirection;
   SwipeDirection2["LEFT"] = "LEFT";
   SwipeDirection2["NONE"] = "NONE";
 })(SwipeDirection || (SwipeDirection = {}));
-const _defineComponent = window["Vue"].defineComponent;
-const _unref = window["Vue"].unref;
-const _createElementVNode = window["Vue"].createElementVNode;
-const _openBlock = window["Vue"].openBlock;
-const _createElementBlock = window["Vue"].createElementBlock;
-const _toDisplayString = window["Vue"].toDisplayString;
-const _withCtx = window["Vue"].withCtx;
-const _createVNode = window["Vue"].createVNode;
-const _renderList = window["Vue"].renderList;
-const _Fragment = window["Vue"].Fragment;
-const _normalizeClass = window["Vue"].normalizeClass;
-const _createTextVNode = window["Vue"].createTextVNode;
+const _defineComponent$1 = window["Vue"].defineComponent;
+const _unref$1 = window["Vue"].unref;
+const _createElementVNode$1 = window["Vue"].createElementVNode;
+const _openBlock$1 = window["Vue"].openBlock;
+const _createElementBlock$1 = window["Vue"].createElementBlock;
+const _toDisplayString$1 = window["Vue"].toDisplayString;
+const _withCtx$1 = window["Vue"].withCtx;
+const _createVNode$1 = window["Vue"].createVNode;
+const _renderList$1 = window["Vue"].renderList;
+const _Fragment$1 = window["Vue"].Fragment;
+const _normalizeClass$1 = window["Vue"].normalizeClass;
+const _createTextVNode$1 = window["Vue"].createTextVNode;
 const _resolveComponent = window["Vue"].resolveComponent;
-const _createBlock = window["Vue"].createBlock;
-const _createCommentVNode = window["Vue"].createCommentVNode;
+const _createBlock$1 = window["Vue"].createBlock;
+const _createCommentVNode$1 = window["Vue"].createCommentVNode;
 const _hoisted_1 = { class: "mb-8 flex items-center" };
 const _hoisted_2 = { class: "px-6" };
-const _hoisted_3 = /* @__PURE__ */ _createElementVNode("svg", {
+const _hoisted_3 = /* @__PURE__ */ _createElementVNode$1("svg", {
   xmlns: "http://www.w3.org/2000/svg",
   class: "h-6 w-6 mr-2",
   fill: "none",
@@ -8101,7 +8101,7 @@ const _hoisted_3 = /* @__PURE__ */ _createElementVNode("svg", {
   stroke: "currentColor",
   "stroke-width": "2"
 }, [
-  /* @__PURE__ */ _createElementVNode("path", {
+  /* @__PURE__ */ _createElementVNode$1("path", {
     "stroke-linecap": "round",
     "stroke-linejoin": "round",
     d: "M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"
@@ -8117,7 +8117,7 @@ const _hoisted_10 = { class: "rounded-sm h-6 gap-3 pl-1 inline-flex items-center
 const _hoisted_11 = { class: "mt-4" };
 const _hoisted_12 = { class: "flex items-start gap-x-1 mb-1 justify-between" };
 const _hoisted_13 = ["onClick"];
-const _hoisted_14 = /* @__PURE__ */ _createElementVNode("svg", {
+const _hoisted_14 = /* @__PURE__ */ _createElementVNode$1("svg", {
   xmlns: "http://www.w3.org/2000/svg",
   class: "h-5 w-5",
   fill: "none",
@@ -8125,12 +8125,12 @@ const _hoisted_14 = /* @__PURE__ */ _createElementVNode("svg", {
   stroke: "currentColor",
   "stroke-width": "2"
 }, [
-  /* @__PURE__ */ _createElementVNode("path", {
+  /* @__PURE__ */ _createElementVNode$1("path", {
     "stroke-linecap": "round",
     "stroke-linejoin": "round",
     d: "M15 12a3 3 0 11-6 0 3 3 0 016 0z"
   }),
-  /* @__PURE__ */ _createElementVNode("path", {
+  /* @__PURE__ */ _createElementVNode$1("path", {
     "stroke-linecap": "round",
     "stroke-linejoin": "round",
     d: "M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
@@ -8144,7 +8144,7 @@ const _hoisted_17 = { class: "flex flex-wrap gap-2 items-start mt-2" };
 const watch = window["Vue"].watch;
 const ref = window["Vue"].ref;
 const reactive = window["Vue"].reactive;
-const computed = window["Vue"].computed;
+const computed$1 = window["Vue"].computed;
 const VCard = window["Components"].VCard;
 const VFormList = window["Components"].VFormList;
 const VFieldWrapper = window["Components"].VFieldWrapper;
@@ -8152,7 +8152,7 @@ const useCardFieldForm = window["Components"].useCardFieldForm;
 const VDrawer = window["Components"].VDrawer;
 const VBreadcrumbs = window["Components"].VBreadcrumbs;
 const PageCardsShow = window["Components"].PageCardsShow;
-const _sfc_main = /* @__PURE__ */ _defineComponent({
+const _sfc_main$1 = /* @__PURE__ */ _defineComponent$1({
   props: {
     title: null,
     breadcrumbs: null,
@@ -8162,13 +8162,13 @@ const _sfc_main = /* @__PURE__ */ _defineComponent({
     const props = __props;
     const state = reactive({ selected: null });
     let kanbanView = window.taskday.views.find((t) => t.type == "kanban");
-    const avilableFields = computed(() => {
+    const avilableFields = computed$1(() => {
       return props.project.fields.filter((field) => {
         return field.type == "status" || Object.keys(kanbanView.types).includes(field.type);
       });
     });
     const currentHandle = useStorage(props.project.id + "_kanbanview-status-handle", null);
-    const currentField = computed(() => {
+    const currentField = computed$1(() => {
       var _a;
       return (_a = props.project.fields.find((field) => field.handle === currentHandle.value)) != null ? _a : props.project.fields.find((field) => field.type == "status" || Object.keys(kanbanView.types).includes(field.type));
     });
@@ -8203,36 +8203,36 @@ const _sfc_main = /* @__PURE__ */ _defineComponent({
     }, { immediate: true });
     return (_ctx, _cache) => {
       const _component_Link = _resolveComponent("Link");
-      return _openBlock(), _createElementBlock(_Fragment, null, [
-        _createElementVNode("div", _hoisted_1, [
-          _createElementVNode("div", _hoisted_2, [
-            _createVNode(_unref(VFormList), {
-              selected: _unref(currentField),
-              options: _unref(avilableFields),
+      return _openBlock$1(), _createElementBlock$1(_Fragment$1, null, [
+        _createElementVNode$1("div", _hoisted_1, [
+          _createElementVNode$1("div", _hoisted_2, [
+            _createVNode$1(_unref$1(VFormList), {
+              selected: _unref$1(currentField),
+              options: _unref$1(avilableFields),
               onChange: updateCurrentField
             }, {
-              trigger: _withCtx(({ item }) => {
+              trigger: _withCtx$1(({ item }) => {
                 var _a;
                 return [
                   _hoisted_3,
-                  _createElementVNode("span", null, _toDisplayString((_a = item == null ? void 0 : item.title) != null ? _a : item == null ? void 0 : item.name), 1)
+                  _createElementVNode$1("span", null, _toDisplayString$1((_a = item == null ? void 0 : item.title) != null ? _a : item == null ? void 0 : item.name), 1)
                 ];
               }),
               _: 1
             }, 8, ["selected", "options"])
           ])
         ]),
-        _createElementVNode("div", _hoisted_4, [
-          _createElementVNode("div", _hoisted_5, [
-            _createElementVNode("div", _hoisted_6, [
-              _createElementVNode("div", _hoisted_7, [
-                _createElementVNode("div", _hoisted_8, [
-                  (_openBlock(true), _createElementBlock(_Fragment, null, _renderList(columns.value, (column) => {
-                    return _openBlock(), _createElementBlock("div", _hoisted_9, [
-                      _createElementVNode("div", null, [
-                        _createElementVNode("span", _hoisted_10, [
-                          _createElementVNode("span", {
-                            class: _normalizeClass({
+        _createElementVNode$1("div", _hoisted_4, [
+          _createElementVNode$1("div", _hoisted_5, [
+            _createElementVNode$1("div", _hoisted_6, [
+              _createElementVNode$1("div", _hoisted_7, [
+                _createElementVNode$1("div", _hoisted_8, [
+                  (_openBlock$1(true), _createElementBlock$1(_Fragment$1, null, _renderList$1(columns.value, (column) => {
+                    return _openBlock$1(), _createElementBlock$1("div", _hoisted_9, [
+                      _createElementVNode$1("div", null, [
+                        _createElementVNode$1("span", _hoisted_10, [
+                          _createElementVNode$1("span", {
+                            class: _normalizeClass$1({
                               "block h-3 w-3 rounded-full border border-gray-600 bg-white dark:border-gray-400 dark:bg-gray-400 dark:bg-opacity-20": column.color === "gray",
                               "block h-3 w-3 rounded-full border border-red-600 bg-red-100 dark:border-red-400 dark:bg-red-400 dark:bg-opacity-20": column.color === "red",
                               "block h-3 w-3 rounded-full border border-green-600 bg-green-100 dark:border-green-400 dark:bg-green-400 dark:bg-opacity-20": column.color === "green",
@@ -8242,11 +8242,11 @@ const _sfc_main = /* @__PURE__ */ _defineComponent({
                               "block h-3 w-3 rounded-full border border-purple-600 bg-purple-100 dark:border-purple-400 dark:bg-purple-400 dark:bg-opacity-20": column.color === "purple"
                             })
                           }, null, 2),
-                          _createTextVNode(" " + _toDisplayString(column.name), 1)
+                          _createTextVNode$1(" " + _toDisplayString$1(column.name), 1)
                         ])
                       ]),
-                      _createElementVNode("div", _hoisted_11, [
-                        _createVNode(_unref(draggable), {
+                      _createElementVNode$1("div", _hoisted_11, [
+                        _createVNode$1(_unref$1(draggable), {
                           onChange: ({ added }) => added && updateColumn(column, added.element),
                           modelValue: column.cards,
                           "onUpdate:modelValue": ($event) => column.cards = $event,
@@ -8255,33 +8255,33 @@ const _sfc_main = /* @__PURE__ */ _defineComponent({
                           group: "tasks",
                           itemKey: "id"
                         }, {
-                          item: _withCtx(({ element }) => [
-                            _createVNode(_unref(VCard), { class: "mb-4" }, {
-                              default: _withCtx(() => [
-                                _createElementVNode("div", _hoisted_12, [
-                                  _createVNode(_component_Link, {
+                          item: _withCtx$1(({ element }) => [
+                            _createVNode$1(_unref$1(VCard), { class: "mb-4" }, {
+                              default: _withCtx$1(() => [
+                                _createElementVNode$1("div", _hoisted_12, [
+                                  _createVNode$1(_component_Link, {
                                     href: _ctx.route("cards.show", element),
                                     class: "inline-flex items-center text-left md:text-sm font-medium hover:underline"
                                   }, {
-                                    default: _withCtx(() => [
-                                      _createTextVNode(_toDisplayString(element.title), 1)
+                                    default: _withCtx$1(() => [
+                                      _createTextVNode$1(_toDisplayString$1(element.title), 1)
                                     ]),
                                     _: 2
                                   }, 1032, ["href"]),
-                                  _createElementVNode("button", {
-                                    onClick: ($event) => _unref(state).selected = element,
+                                  _createElementVNode$1("button", {
+                                    onClick: ($event) => _unref$1(state).selected = element,
                                     class: "inline-flex items-center ml-2"
                                   }, _hoisted_15, 8, _hoisted_13)
                                 ]),
-                                _createElementVNode("div", _hoisted_16, [
-                                  _ctx.route().current() != "projects.show" ? (_openBlock(), _createBlock(_unref(VBreadcrumbs), {
+                                _createElementVNode$1("div", _hoisted_16, [
+                                  _ctx.route().current() != "projects.show" ? (_openBlock$1(), _createBlock$1(_unref$1(VBreadcrumbs), {
                                     key: 0,
                                     items: element.breadcrumbs
-                                  }, null, 8, ["items"])) : _createCommentVNode("", true)
+                                  }, null, 8, ["items"])) : _createCommentVNode$1("", true)
                                 ]),
-                                _createElementVNode("div", _hoisted_17, [
-                                  (_openBlock(true), _createElementBlock(_Fragment, null, _renderList(__props.project.fields.filter((f) => f.handle !== _unref(currentHandle)), (field) => {
-                                    return _openBlock(), _createBlock(_unref(VFieldWrapper), {
+                                _createElementVNode$1("div", _hoisted_17, [
+                                  (_openBlock$1(true), _createElementBlock$1(_Fragment$1, null, _renderList$1(__props.project.fields.filter((f) => f.handle !== _unref$1(currentHandle)), (field) => {
+                                    return _openBlock$1(), _createBlock$1(_unref$1(VFieldWrapper), {
                                       key: field.id,
                                       card: element,
                                       field
@@ -8294,10 +8294,10 @@ const _sfc_main = /* @__PURE__ */ _defineComponent({
                           ]),
                           _: 2
                         }, 1032, ["onChange", "modelValue", "onUpdate:modelValue"]),
-                        _createVNode(_sfc_main$1, {
+                        _createVNode$1(_sfc_main$2, {
                           project: __props.project,
                           status: column,
-                          handle: _unref(currentHandle)
+                          handle: _unref$1(currentHandle)
                         }, null, 8, ["project", "status", "handle"])
                       ])
                     ]);
@@ -8307,19 +8307,110 @@ const _sfc_main = /* @__PURE__ */ _defineComponent({
             ])
           ])
         ]),
-        _unref(state).selected ? (_openBlock(), _createBlock(_unref(VDrawer), {
+        _unref$1(state).selected ? (_openBlock$1(), _createBlock$1(_unref$1(VDrawer), {
           key: 0,
           isOpen: true,
-          onClose: () => _unref(state).selected = null
+          onClose: () => _unref$1(state).selected = null
         }, {
-          default: _withCtx(() => [
-            _createVNode(_unref(PageCardsShow), {
-              card: _unref(state).selected
+          default: _withCtx$1(() => [
+            _createVNode$1(_unref$1(PageCardsShow), {
+              card: _unref$1(state).selected
             }, null, 8, ["card"])
           ]),
           _: 1
-        }, 8, ["onClose"])) : _createCommentVNode("", true)
+        }, 8, ["onClose"])) : _createCommentVNode$1("", true)
       ], 64);
+    };
+  }
+});
+const _defineComponent = window["Vue"].defineComponent;
+const _unref = window["Vue"].unref;
+const _toDisplayString = window["Vue"].toDisplayString;
+const _createTextVNode = window["Vue"].createTextVNode;
+const _normalizeClass = window["Vue"].normalizeClass;
+const _withCtx = window["Vue"].withCtx;
+const _createVNode = window["Vue"].createVNode;
+const _renderList = window["Vue"].renderList;
+const _Fragment = window["Vue"].Fragment;
+const _openBlock = window["Vue"].openBlock;
+const _createElementBlock = window["Vue"].createElementBlock;
+const _createElementVNode = window["Vue"].createElementVNode;
+const _createBlock = window["Vue"].createBlock;
+const _createCommentVNode = window["Vue"].createCommentVNode;
+const computed = window["Vue"].computed;
+const VDropdown = window["Components"].VDropdown;
+const VDropdownButton = window["Components"].VDropdownButton;
+const VDropdownItems = window["Components"].VDropdownItems;
+const VDropdownItem = window["Components"].VDropdownItem;
+const _sfc_main = /* @__PURE__ */ _defineComponent({
+  props: {
+    value: {
+      type: String,
+      default: ""
+    },
+    filter: {
+      type: Object,
+      required: true
+    },
+    column: {
+      type: String,
+      required: true
+    }
+  },
+  setup(__props) {
+    const props = __props;
+    const currentColumn = computed(() => {
+      return props.filter.columns.find((r) => r.handle === props.column);
+    });
+    const current = computed(() => {
+      var _a;
+      return (_a = currentColumn.value) == null ? void 0 : _a.options.find((option2) => option2.color === props.value);
+    });
+    const name = computed(() => {
+      var _a;
+      return (_a = current.value) == null ? void 0 : _a.name;
+    });
+    const color = computed(() => {
+      var _a;
+      return (_a = current.value) == null ? void 0 : _a.color;
+    });
+    return (_ctx, _cache) => {
+      return _openBlock(), _createBlock(_unref(VDropdown), null, {
+        default: _withCtx(() => [
+          _createVNode(_unref(VDropdownButton), {
+            class: _normalizeClass([{
+              "bg-gray-100 dark:bg-gray-400 text-gray-600 dark:text-gray-400 dark:bg-opacity-20": _unref(color) === "gray",
+              "bg-red-100 dark:bg-red-400 text-red-600 dark:text-red-400 dark:bg-opacity-20": _unref(color) === "red",
+              "bg-green-100 dark:bg-green-400 text-green-600 dark:text-green-400 dark:bg-opacity-20": _unref(color) === "green",
+              "bg-yellow-100 dark:bg-yellow-400 text-yellow-600 dark:text-yellow-400 dark:bg-opacity-20": _unref(color) === "yellow",
+              "bg-blue-100 dark:bg-blue-400 text-blue-600 dark:text-blue-400 dark:bg-opacity-20": _unref(color) === "blue",
+              "bg-purple-100 dark:bg-purple-400 text-purple-600 dark:text-purple-400 dark:bg-opacity-20": _unref(color) === "purple"
+            }, "rounded transition font-medium h-9 text-sm whitespace-nowrap w-auto px-4 flex items-center justify-center"])
+          }, {
+            default: _withCtx(() => [
+              _createTextVNode(_toDisplayString(_unref(name)), 1)
+            ]),
+            _: 1
+          }, 8, ["class"]),
+          _unref(currentColumn) && _unref(currentColumn).options ? (_openBlock(), _createBlock(_unref(VDropdownItems), { key: 0 }, {
+            default: _withCtx(() => [
+              (_openBlock(true), _createElementBlock(_Fragment, null, _renderList(_unref(currentColumn).options, (option2) => {
+                return _openBlock(), _createBlock(_unref(VDropdownItem), {
+                  key: option2.id,
+                  onClick: ($event) => _ctx.$emit("update:value", option2.color)
+                }, {
+                  default: _withCtx(() => [
+                    _createElementVNode("span", null, _toDisplayString(option2.name), 1)
+                  ]),
+                  _: 2
+                }, 1032, ["onClick"]);
+              }), 128))
+            ]),
+            _: 1
+          })) : _createCommentVNode("", true)
+        ]),
+        _: 1
+      });
     };
   }
 });
@@ -8328,7 +8419,10 @@ document.addEventListener("taskday:init", () => {
     field: StatusField,
     options: StatusOptions,
     views: [
-      { type: "kanban", title: "Board", component: _sfc_main, needs: ["status"] }
+      { type: "kanban", title: "Board", component: _sfc_main$1, needs: ["status"] }
     ]
   });
+  taskday.registerFilter("status-field", [
+    { type: "status-field", component: _sfc_main }
+  ]);
 });

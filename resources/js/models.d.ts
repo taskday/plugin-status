@@ -50,6 +50,11 @@ interface Field {
   }
 }
 
+interface Option {
+  color: string,
+  name: string
+}
+
 interface Comment {
   id: number;
   content: string;

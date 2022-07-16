@@ -6,6 +6,7 @@ use Taskday\Bundles\AssetBundle;
 use Taskday\Base\Plugin;
 use Performing\Taskday\Status\Fields\StatusField;
 use Performing\Taskday\Status\Views\KanbanView;
+use Performing\Taskday\Status\Filters\StatusFieldFilter;
 
 class StatusPlugin extends Plugin
 {
@@ -29,6 +30,13 @@ class StatusPlugin extends Plugin
     {
         return [
             new KanbanView()
+        ];
+    }
+
+    public function filters(): array
+    {
+        return [
+            new StatusFieldFilter()
         ];
     }
 }

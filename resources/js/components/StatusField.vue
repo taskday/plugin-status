@@ -44,11 +44,6 @@ import { computed, defineComponent } from 'vue';
 //@ts-ignore
 import { useField, VDropdown, VDropdownButton, VDropdownItems, VDropdownItem } from 'taskday';
 
-interface Option {
-  color: string,
-  name: string
-}
-
 export default defineComponent({
   props: {
     readonly: {

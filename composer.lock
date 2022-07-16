@@ -572,16 +572,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v9.19.0",
+            "version": "v9.20.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "bbce25bd823133f6a5a724f2d62680b711f1d0df"
+                "reference": "c99868f1c9bf2f5d250993121838db905591864f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/bbce25bd823133f6a5a724f2d62680b711f1d0df",
-                "reference": "bbce25bd823133f6a5a724f2d62680b711f1d0df",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/c99868f1c9bf2f5d250993121838db905591864f",
+                "reference": "c99868f1c9bf2f5d250993121838db905591864f",
                 "shasum": ""
             },
             "require": {
@@ -747,7 +747,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2022-06-28T14:33:19+00:00"
+            "time": "2022-07-13T13:26:22+00:00"
         },
         {
             "name": "laravel/serializable-closure",
@@ -5228,16 +5228,16 @@
         },
         {
             "name": "laravel/fortify",
-            "version": "v1.13.0",
+            "version": "v1.13.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/fortify.git",
-                "reference": "0b8e7a860f0aa4868846555f5d095d7b546ffb9c"
+                "reference": "9dee9cf87c6469af1c3ab001e5a83c080efa306c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/fortify/zipball/0b8e7a860f0aa4868846555f5d095d7b546ffb9c",
-                "reference": "0b8e7a860f0aa4868846555f5d095d7b546ffb9c",
+                "url": "https://api.github.com/repos/laravel/fortify/zipball/9dee9cf87c6469af1c3ab001e5a83c080efa306c",
+                "reference": "9dee9cf87c6469af1c3ab001e5a83c080efa306c",
                 "shasum": ""
             },
             "require": {
@@ -5287,7 +5287,7 @@
                 "issues": "https://github.com/laravel/fortify/issues",
                 "source": "https://github.com/laravel/fortify"
             },
-            "time": "2022-05-05T14:52:14+00:00"
+            "time": "2022-07-05T19:55:35+00:00"
         },
         {
             "name": "laravel/sanctum",
@@ -8373,12 +8373,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/taskday/framework.git",
-                "reference": "a50ea8fabddaf5847a0558407c9957b6dad8838c"
+                "reference": "93551a4d34a9e698810a66f8627b31bf620a9dbc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/taskday/framework/zipball/a50ea8fabddaf5847a0558407c9957b6dad8838c",
-                "reference": "a50ea8fabddaf5847a0558407c9957b6dad8838c",
+                "url": "https://api.github.com/repos/taskday/framework/zipball/93551a4d34a9e698810a66f8627b31bf620a9dbc",
+                "reference": "93551a4d34a9e698810a66f8627b31bf620a9dbc",
                 "shasum": ""
             },
             "require": {
@@ -8405,7 +8405,10 @@
             "extra": {
                 "laravel": {
                     "providers": [
-                        "Taskday\\TaskdayServiceProvider"
+                        "Taskday\\TaskdayServiceProvider",
+                        "Taskday\\Providers\\AuthServiceProvider",
+                        "Taskday\\Providers\\RouteServiceProvider",
+                        "Taskday\\Providers\\EventServiceProvider"
                     ]
                 }
             },
@@ -8420,9 +8423,9 @@
             ],
             "support": {
                 "issues": "https://github.com/taskday/framework/issues",
-                "source": "https://github.com/taskday/framework/tree/master"
+                "source": "https://github.com/taskday/framework/tree/v0.2.0"
             },
-            "time": "2022-07-08T11:05:43+00:00"
+            "time": "2022-07-09T13:12:26+00:00"
         },
         {
             "name": "theseer/tokenizer",
